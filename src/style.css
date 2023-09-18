@@ -1,6 +1,21 @@
 body{
     background-color: #002726;
     height: 100%;
-    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
+.container {
+    background-color: #F6FEFF;
+    height: 500px;
+    width: 250px;
+    border-radius: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.booknook{
+    align-items: top-center;
+}
