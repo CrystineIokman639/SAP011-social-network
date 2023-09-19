@@ -6,16 +6,50 @@ body{
     justify-content: center;
 }
 
-.container {
+.form-container {
     background-color: #F6FEFF;
     height: 500px;
     width: 250px;
     border-radius: 18px;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
+    gap: 15px;
 }
 
 .booknook{
     align-items: top-center;
 }
+
+.container{
+    display: flex;
+    flex-direction: column;
+}
+form {
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+}
+.email, .senha {
+    height:15px;
+    padding: 8px;
+    display: flex;
+    margin: 10px;
+}
+.material-symbols-rounded {
+    cursor: pointer;
+    background: none;
+    border: none;
+ }
+
+  form .senha, .material-symbols-rounded {
+    position: absolute;
+
+
+ }
+
+ 
+
+
+
