@@ -19,13 +19,16 @@
     </header>
 
     <nav class="form-container">
-      <form>
+      <form id="email-login">
         <h1>Entrar</h1>
-        <input class="email" type="email" placeholder="e-mail">
-        <input class="senha" type="password" placeholder="senha">
-        <button class="material-symbols-rounded">
-          visibility
-        </button>
+        <section>
+         <input class="login1" id="email" type="email" placeholder="e-mail"> 
+        </section>
+        <section>
+         <input id="password" class="senha" type="password" placeholder="senha">
+          <img class="show" src="img/visibility.png" id="showOn" alt="logo de olho para mostrar a senha" onclick="verSenha()">
+          <img class="show" src="img/visibility_off.png" id="showOff" alt="logo de olho para ocultar a senha" onclick="ocultarSenha()">
+        </section>
         <h4 class="forget-password">esqueceu sua senha?</h4>
         <button class="btn-login">Entrar</button>
         <h2>Ou continue com</h2>
