@@ -1,6 +1,2 @@
-// aqui exportaras las funciones que necesites
-
-export const myFunction = () => {
-  // aqui tu codigo
-  console.log('Hola mundo!');
-};
+import {auth} from '../../firebase.config';
+import { signInWithEmailAndPassword } from "firebase/auth";
