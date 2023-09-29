@@ -22,7 +22,6 @@ const loginTemplate = `
           <img class="show" src="img/visibility_off.png" id="showOff" alt="logo de olho para ocultar a senha">
           <span id="pass-alert" class="pass-error"></span>
         </section>
-        <h4 class="forget-password">esqueceu sua senha?</h4>
         <button class="btn-login" id="btn-login">Entrar</button>
         <span id="user-alert" class="user-error"></span>
         <h2>Ou continue com</h2>

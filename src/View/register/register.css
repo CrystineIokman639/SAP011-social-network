@@ -1,0 +1,158 @@
+.booknook-reg {
+    margin-bottom: 13px;
+}
+
+body{
+    background-color: #002726;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Imprima', sans-serif;
+}
+
+header{
+    display: flex;
+    justify-content: center;
+}
+
+.register{
+    font-size: 35px;
+}
+
+.register-container {
+    background-color: #F6FEFF;
+    height: 470px;
+    width: 250px;
+    border-radius: 18px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#name-lastname{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    width: 160px;
+    height: 25px;
+    padding: 0 20px;
+    margin: 10px;
+    border: 0 bottom gray;
+    border-radius: 3px;
+    text-align: center;
+}
+
+#user-name{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    width: 160px;
+    height: 25px;
+    padding: 0 20px;
+    margin: 10px;
+    border: 0 bottom gray;
+    border-radius: 3px;
+    text-align: center;
+}
+
+#email-reg{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    width: 160px;
+    height: 25px;
+    padding: 0 20px;
+    margin: 10px;
+    border: 0 bottom gray;
+    border-radius: 3px;
+    text-align: center;
+}
+
+#user-name{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    width: 160px;
+    height: 25px;
+    padding: 0 20px;
+    margin: 10px;
+    border: 0 bottom gray;
+    border-radius: 3px;
+    text-align: center;
+}
+
+#name-lastname, #user-name, #email-reg{
+    margin: 10px;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 2px solid #09ceff;
+    background-color: #F6FEFF;
+    outline: none;
+}
+
+.password-register{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    width: 160px;
+    height: 25px;
+    padding: 0 20px;
+    margin: 10px;
+    border: 0 bottom gray;
+    border-radius: 3px;
+    text-align: center;
+}
+
+.pass-register{
+    position: relative;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    width: 160px;
+    height: 25px;
+    padding: 0 20px;
+    margin: 10px;
+    border: 0 bottom gray;
+    border-radius: 3px;
+    text-align: center;
+}
+#password-reg, #password-confirm {
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 2px solid #09ceff;
+    background-color: #F6FEFF;
+    outline: none;
+    font-family: 'Imprima', sans-serif;
+}
+
+#register-btn{
+    font-family: 'Imprima', sans-serif;
+    color: white;
+    width: 130px;
+    height: 40px;
+    background-color: #04BFAD;
+    border: none;
+    border-radius: 10px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.account {
+    margin: 15px;
+}
+
+.your-account {
+    margin-bottom: 20px;
+    color: rgb(18, 138, 250);
+    cursor: pointer;
+}
