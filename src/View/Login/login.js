@@ -1,4 +1,5 @@
-// import { authLogin } from "../../Firebase/firebaseauth";
+import { authLogin } from "../../Firebase/firebaseauth";
+import feed from "../feed/feed";
 import './login.css';
 
 export default () => {
@@ -13,11 +14,11 @@ const loginTemplate = `
       <form id="email-login">
         <h1>entrar</h1>
         <section class="email2">
-         <input class="login1" id="email" type="email" placeholder="e-mail">
+         <input class="login1" id="email" type="email" placeholder="e-mail" required>
          <span id="email-alert" class="email-error"></span>
         </section>
         <section class="passwordDad">
-         <input id="password" class="pass" type="password" placeholder="senha">
+         <input id="password" class="pass" type="password" placeholder="senha" required>
           <img class="show" src="img/visibility.png" id="showOn" alt="logo de olho para mostrar a senha">
           <img class="show" src="img/visibility_off.png" id="showOff" alt="logo de olho para ocultar a senha">
           <span id="pass-alert" class="pass-error"></span>
@@ -29,92 +30,70 @@ const loginTemplate = `
         <img class="google" src="img/google.png" alt="logo-atual-google" width="80">
         <h3>Não possui uma conta?</h3>
         <a class="forget-password" href='/#register'>criar conta</a>
-      </form>
-    </nav>
-  </section>
-`;
+        </form>
+        </nav>
+        </section>
+        `;
+        
+        user.innerHTML = loginTemplate;
 
-user.innerHTML = loginTemplate;
 
-// const showOn = document.getElementById('showOn');
-// const showOff = document.getElementById('showOff');
-// const entrar = document.getElementById('btn-login');
+const showOn = user.querySelector('#showOn');
+const showOff = user.querySelector('#showOff');
+const entrar = user.querySelector('#btn-login');
+const emailImput= user.querySelector('#email');
+const senhaImput = user.querySelector ('#password');
+const emailAlert = user.querySelector ('#email-alert')
+let email= "";
+let senha= "";
+const strongPassword = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_\-+={}[\]\\|:;'<>,.?/~]).{6,}$/;
 
-// entrar.addEventListener('click', (e) => {
-//   e.preventDefault()
-//   authLogin()
-// })
+function validaCampo(){
+    if (!email)
+    {
+    emailAlert.textContent=' insira um e-mail válido';
 
-// showOn.addEventListener('click', () => {
-//   document.getElementById('password').setAttribute('type', 'text');
-//   showOn.style.visibility = 'hidden';
-//   showOff.style.visibility = 'visible';
-// });
 
-// showOff.addEventListener('click', () => {
-//   document.getElementById('password').setAttribute('type', 'password');
-//   showOn.style.visibility = 'visible';
-//   showOff.style.visibility = 'hidden';
-// });
+  }
+
+}
+
+
+
+
+entrar.addEventListener('click', (e) => {
+  e.preventDefault()
+  
+  authLogin(email,senha)
+
+})
+
+
+emailImput.addEventListener("change", (e)=>{
+  email=e.target.value
+
+})
+
+senhaImput.addEventListener("change", (e)=>{
+  senha=e.target.value
+})
+
+showOn.addEventListener('click', () => {
+ user.querySelector('#password').setAttribute('type', 'text');
+  showOn.style.visibility = 'hidden';
+  showOff.style.visibility = 'visible';
+});
+
+showOff.addEventListener('click', () => {
+  user.querySelector('#password').setAttribute('type', 'password');
+  showOn.style.visibility = 'visible';
+  showOff.style.visibility = 'hidden';
+});
 
 return user;
 }
 
 
-// const emailLogin = document.querySelector('login1');
-// const passLogin = document.querySelector('pass');
-// const btnLogin = document.querySelector('btn-login');
-// const googleLogin = document.querySelector('google');
 
-// const emailAlert = user.querySelector('#email-alert');
-// const passAlert = user.querySelector('#pass-alert');
-// const userAlert = user.querySelector('#user-alert');
 
-// const login = user.querySelector('#btn-login');
-//   const strongPass = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_\-+={}[\]\\|:;'<>,.?/~]).{6,}$/;
 
-//   function validateEmail() {
-//     const emailErrorInputValue = emailLogin.value;
-//     if (!emailErrorInputValue) {
-//       emailAlert.textContent = 'Insira um e-mail válido';
-//     }
-//   }
-
-//   function validatePassword() {
-//     const passInputValue = passLogin.value;
-//     if (!passInputValue) {
-//       passAlert.textContent = 'Senha inválida';
-//     }
-//   }
-
-//   // limpar o erro ao digitar no input
-//   emailInput.addEventListener('input', () => {
-//     emailAlert.textContent = '';
-//   });
-
-//   passInput.addEventListener('input', () => {
-//     passAlert.textContent = '';
-//   });
-
-// const showOn = document.getElementById('showOn');
-// const showOff = document.getElementById('showOff');
-// const entrar = document.getElementById('btn-login');
-
-// entrar.addEventListener('click', (e) => {
-//   e.preventDefault()
-//   authLogin()
-// })
-
-// showOn.addEventListener('click', () => {
-//   document.getElementById('password').setAttribute('type', 'text');
-//   showOn.style.visibility = 'hidden';
-//   showOff.style.visibility = 'visible';
-// });
-
-// showOff.addEventListener('click', () => {
-//   document.getElementById('password').setAttribute('type', 'password');
-//   showOn.style.visibility = 'visible';
-//   showOff.style.visibility = 'hidden';
-// });
-
-// }
