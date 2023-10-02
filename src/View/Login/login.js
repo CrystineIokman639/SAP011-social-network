@@ -1,9 +1,9 @@
-// import { authLogin } from "../../Firebase/firebaseauth";
+// import { authLogin } from "../../firebase/firebaseauth";
 import './login.css';
 
 export default () => {
-const user = document.createElement('section');
-const loginTemplate = `
+  const user = document.createElement('section');
+  const loginTemplate = `
   <section class="container">
     <header>
       <img class="booknook" src="img/logo2.png" alt="logo da rede social" width="250">
@@ -33,87 +33,28 @@ const loginTemplate = `
   </section>
 `;
 
-user.innerHTML = loginTemplate;
+  user.innerHTML = loginTemplate;
 
-// const showOn = document.getElementById('showOn');
-// const showOff = document.getElementById('showOff');
-// const entrar = document.getElementById('btn-login');
+  const showOn = user.querySelector('#showOn');
+  const showOff = user.querySelector('#showOff');
+  const entrar = user.querySelector('#btn-login');
 
-// entrar.addEventListener('click', (e) => {
-//   e.preventDefault()
-//   authLogin()
-// })
+  entrar.addEventListener('click', (e) => {
+    e.preventDefault()
+    authLogin()
+  })
 
-// showOn.addEventListener('click', () => {
-//   document.getElementById('password').setAttribute('type', 'text');
-//   showOn.style.visibility = 'hidden';
-//   showOff.style.visibility = 'visible';
-// });
+  showOn.addEventListener('click', () => {
+    user.querySelector('#password').setAttribute('type', 'text');
+    showOn.style.visibility = 'hidden';
+    showOff.style.visibility = 'visible';
+  })
 
-// showOff.addEventListener('click', () => {
-//   document.getElementById('password').setAttribute('type', 'password');
-//   showOn.style.visibility = 'visible';
-//   showOff.style.visibility = 'hidden';
-// });
+  showOff.addEventListener('click', () => {
+    user.querySelector('#password').setAttribute('type', 'password');
+    showOn.style.visibility = 'visible';
+    showOff.style.visibility = 'hidden';
+  })
 
-return user;
+  return user;
 }
-
-
-// const emailLogin = document.querySelector('login1');
-// const passLogin = document.querySelector('pass');
-// const btnLogin = document.querySelector('btn-login');
-// const googleLogin = document.querySelector('google');
-
-// const emailAlert = user.querySelector('#email-alert');
-// const passAlert = user.querySelector('#pass-alert');
-// const userAlert = user.querySelector('#user-alert');
-
-// const login = user.querySelector('#btn-login');
-//   const strongPass = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_\-+={}[\]\\|:;'<>,.?/~]).{6,}$/;
-
-//   function validateEmail() {
-//     const emailErrorInputValue = emailLogin.value;
-//     if (!emailErrorInputValue) {
-//       emailAlert.textContent = 'Insira um e-mail válido';
-//     }
-//   }
-
-//   function validatePassword() {
-//     const passInputValue = passLogin.value;
-//     if (!passInputValue) {
-//       passAlert.textContent = 'Senha inválida';
-//     }
-//   }
-
-//   // limpar o erro ao digitar no input
-//   emailInput.addEventListener('input', () => {
-//     emailAlert.textContent = '';
-//   });
-
-//   passInput.addEventListener('input', () => {
-//     passAlert.textContent = '';
-//   });
-
-// const showOn = document.getElementById('showOn');
-// const showOff = document.getElementById('showOff');
-// const entrar = document.getElementById('btn-login');
-
-// entrar.addEventListener('click', (e) => {
-//   e.preventDefault()
-//   authLogin()
-// })
-
-// showOn.addEventListener('click', () => {
-//   document.getElementById('password').setAttribute('type', 'text');
-//   showOn.style.visibility = 'hidden';
-//   showOff.style.visibility = 'visible';
-// });
-
-// showOff.addEventListener('click', () => {
-//   document.getElementById('password').setAttribute('type', 'password');
-//   showOn.style.visibility = 'visible';
-//   showOff.style.visibility = 'hidden';
-// });
-
-// }
