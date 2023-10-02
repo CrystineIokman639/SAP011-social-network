@@ -1,11 +1,11 @@
-// import { authLogin } from "../../Firebase/firebaseauth";
+import { authLogin } from '../../Firebase/firebaseauth';
 import './login.css';
 
 export default () => {
-const user = document.createElement('section');
+const user = document.createElement("section");
 const loginTemplate = `
   <section class="container">
-    <header>
+    <header class="topp">
       <img class="booknook" src="img/logo2.png" alt="logo da rede social" width="250">
     </header>
 
@@ -28,7 +28,7 @@ const loginTemplate = `
         <h2>Ou continue com</h2>
         <img class="google" src="img/google.png" alt="logo-atual-google" width="80">
         <h3>Não possui uma conta?</h3>
-        <a class="forget-password" href='/#register'>criar conta</a>
+        <a class="forget-password" href="/#register">criar conta</a>
       </form>
     </nav>
   </section>
@@ -36,85 +36,27 @@ const loginTemplate = `
 
 user.innerHTML = loginTemplate;
 
-// const showOn = document.getElementById('showOn');
-// const showOff = document.getElementById('showOff');
-// const entrar = document.getElementById('btn-login');
+const showOn = loginTemplate.querySelector('#showOn');
+const showOff = loginTemplate.querySelector('#showOff');
+const entrar = loginTemplate.querySelector('#btn-login');
 
-// entrar.addEventListener('click', (e) => {
-//   e.preventDefault()
-//   authLogin()
-// })
+entrar.addEventListener('click', (e) => {
+  e.preventDefault()
+  authLogin()
+});
 
-// showOn.addEventListener('click', () => {
-//   document.getElementById('password').setAttribute('type', 'text');
-//   showOn.style.visibility = 'hidden';
-//   showOff.style.visibility = 'visible';
-// });
-
-// showOff.addEventListener('click', () => {
-//   document.getElementById('password').setAttribute('type', 'password');
-//   showOn.style.visibility = 'visible';
-//   showOff.style.visibility = 'hidden';
-// });
+showOn.addEventListener('click', () => {
+  loginTemplate.querySelector('#password').setAttribute('type', 'text');
+  showOn.style.visibility = 'hidden';
+  showOff.style.visibility = 'visible';
+});
+console.log(showOff);
+showOff.addEventListener('click', () => {
+  loginTemplate.querySelector('#password').setAttribute('type', 'password');
+  showOn.style.visibility = 'visible';
+  showOff.style.visibility = 'hidden';
+  console.log("visible");
+});
 
 return user;
 }
-
-
-// const emailLogin = document.querySelector('login1');
-// const passLogin = document.querySelector('pass');
-// const btnLogin = document.querySelector('btn-login');
-// const googleLogin = document.querySelector('google');
-
-// const emailAlert = user.querySelector('#email-alert');
-// const passAlert = user.querySelector('#pass-alert');
-// const userAlert = user.querySelector('#user-alert');
-
-// const login = user.querySelector('#btn-login');
-//   const strongPass = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_\-+={}[\]\\|:;'<>,.?/~]).{6,}$/;
-
-//   function validateEmail() {
-//     const emailErrorInputValue = emailLogin.value;
-//     if (!emailErrorInputValue) {
-//       emailAlert.textContent = 'Insira um e-mail válido';
-//     }
-//   }
-
-//   function validatePassword() {
-//     const passInputValue = passLogin.value;
-//     if (!passInputValue) {
-//       passAlert.textContent = 'Senha inválida';
-//     }
-//   }
-
-//   // limpar o erro ao digitar no input
-//   emailInput.addEventListener('input', () => {
-//     emailAlert.textContent = '';
-//   });
-
-//   passInput.addEventListener('input', () => {
-//     passAlert.textContent = '';
-//   });
-
-// const showOn = document.getElementById('showOn');
-// const showOff = document.getElementById('showOff');
-// const entrar = document.getElementById('btn-login');
-
-// entrar.addEventListener('click', (e) => {
-//   e.preventDefault()
-//   authLogin()
-// })
-
-// showOn.addEventListener('click', () => {
-//   document.getElementById('password').setAttribute('type', 'text');
-//   showOn.style.visibility = 'hidden';
-//   showOff.style.visibility = 'visible';
-// });
-
-// showOff.addEventListener('click', () => {
-//   document.getElementById('password').setAttribute('type', 'password');
-//   showOn.style.visibility = 'visible';
-//   showOff.style.visibility = 'hidden';
-// });
-
-// }

@@ -1,6 +1,6 @@
 import login from "./View/Login/login"
 import feed from "./View/feed/feed"
-// import register from "./View/register/register"
+import register from "./View/register/register"
 
 const main = document.querySelector("#main");
 const init = () => {
@@ -23,6 +23,7 @@ const init = () => {
 )}
 
 window.addEventListener ("load", () => {
+    window.location.hash="";
     main.appendChild(login());
     init(); 
 });
