@@ -25,7 +25,7 @@ export default () => {
     </ul>
    </nav>`
 
-    userFeed.innerHTML = template;
+    userFeed = template;
 return userFeed;
 }
 
