@@ -8,16 +8,15 @@
     margin: 0;
     padding: 0;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    /* background-color: blue; */
+    flex-direction: column
 }
 
 .topHeader {
     background: #002726;
     width: 100vw;
     height: 50px;
-    display: block;
+    align-items: center;
+    justify-content: center;
 }
 
 .logo-header{
@@ -30,7 +29,8 @@
     height: 100vh;
     background-color: #04BFAD;
     display: flex;
-    /* justify-content: start; */
+    flex-direction: column;
+    justify-content: start;
 }
 
 .containerFeed{
@@ -41,7 +41,24 @@
     background-color: #C0E1DF;
 }
 
+.form-feed{
+    justify-content: center;
+    display: flex;
+}
+
 .user-text-area{
     resize: none;
-    /* background-color: rgb(255, 72, 0); */
 }
+
+ul{
+    list-style: none;
+}
+
+.cat{
+    display: block;
+    width: 250px;
+    height: auto;
+    margin: 10px;
+    cursor: pointer;
+}
+

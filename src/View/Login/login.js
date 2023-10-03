@@ -1,5 +1,4 @@
 import { authLogin } from "../../Firebase/firebaseauth";
-import feed from "../feed/feed";
 import './login.css';
 
 export default () => {

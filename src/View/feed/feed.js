@@ -14,18 +14,18 @@ export default () => {
       </section>
     <ul class="menu">
       <li>
-      <a>Feed</a>
+      <a class="cat">Feed</a>
       </li>
       <li>
-      <a>Sair</a>
+      <a class="cat">Sair</a>
       </li>
       <li>
-      <a>Meu aerfil</a>
+      <a class="cat">Meu perfil</a>
       </li>
     </ul>
    </nav>`
 
-    userFeed = template;
+    userFeed.innerHTML = template;
 return userFeed;
 }
 
