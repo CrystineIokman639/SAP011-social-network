@@ -1,5 +1,6 @@
-import { signInWithEmailAndPassword } from 'firebase/auth';
-import {auth,app} from './firebase.config';
+import {auth, app} from './firebase.config';
+import {SignInWithEmailandPassword} from 'firebase/auth';
+
 
 function authLogin (email,password){
 signInWithEmailAndPassword(auth, email, password)

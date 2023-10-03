@@ -1,9 +1,9 @@
-import { authLogin } from "../../Firebase/firebaseauth";
+// import { authLogin } from "../../firebase/firebaseauth";
 import './login.css';
 
 export default () => {
-const user = document.createElement("section");
-const loginTemplate = `
+  const user = document.createElement('section');
+  const loginTemplate = `
   <section class="container">
     <header class="topp">
       <img class="booknook" src="img/logo2.png" alt="logo da rede social" width="250">
@@ -22,7 +22,6 @@ const loginTemplate = `
           <img class="show" src="img/visibility_off.png" id="showOff" alt="logo de olho para ocultar a senha">
           <span id="pass-alert" class="pass-error"></span>
         </section>
-        <h4 class="forget-password">esqueceu sua senha?</h4>
         <button class="btn-login" id="btn-login">Entrar</button>
         <span id="user-alert" class="user-error"></span>
         <h2>Ou continue com</h2>
@@ -36,63 +35,30 @@ const loginTemplate = `
         
         user.innerHTML = loginTemplate;
 
+  user.innerHTML = loginTemplate;
 
-const showOn = user.querySelector('#showOn');
-const showOff = user.querySelector('#showOff');
-const entrar = user.querySelector('#btn-login');
-const emailImput= user.querySelector('#email');
-const senhaImput = user.querySelector ('#password');
-const emailAlert = user.querySelector ('#email-alert')
-let email= "";
-let senha= "";
-const strongPassword = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_\-+={}[\]\\|:;'<>,.?/~]).{6,}$/;
+  const showOn = user.querySelector('#showOn');
+  const showOff = user.querySelector('#showOff');
+  const entrar = user.querySelector('#btn-login');
 
-function validaCampo(){
-    if (!email)
-    {
-    emailAlert.textContent=' insira um e-mail válido';
+  entrar.addEventListener('click', (e) => {
+    e.preventDefault()
+    authLogin()
+  })
 
+  showOn.addEventListener('click', () => {
+    console.log("showOn")
+    user.querySelector('#password').setAttribute('type', 'password');
+    showOn.style.visibility = 'hidden';
+    showOff.style.visibility = 'visible';
+  })
 
-  }
+  showOff.addEventListener('click', () => {
+    console.log("showOff")
+    user.querySelector('#password').setAttribute('type', 'text');
+    showOn.style.visibility = 'visible';
+    showOff.style.visibility = 'hidden';
+  })
 
+  return user;
 }
-
-
-
-
-entrar.addEventListener('click', (e) => {
-  e.preventDefault()
-  
-  authLogin(email,senha)
-
-})
-
-
-emailImput.addEventListener("change", (e)=>{
-  email=e.target.value
-
-})
-
-senhaImput.addEventListener("change", (e)=>{
-  senha=e.target.value
-})
-
-showOn.addEventListener('click', () => {
- user.querySelector('#password').setAttribute('type', 'text');
-  showOn.style.visibility = 'hidden';
-  showOff.style.visibility = 'visible';
-});
-
-showOff.addEventListener('click', () => {
-  user.querySelector('#password').setAttribute('type', 'password');
-  showOn.style.visibility = 'visible';
-  showOff.style.visibility = 'hidden';
-});
-
-return user;
-}
-
-
-
-
-
