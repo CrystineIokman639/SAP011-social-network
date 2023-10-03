@@ -7,7 +7,7 @@ export default () => {
   const user = document.createElement('section');
   const loginTemplate = `
   <section class="container">
-    <header>
+    <header class="topp">
       <img class="booknook" src="img/logo2.png" alt="logo da rede social" width="250">
     </header>
 
@@ -36,7 +36,6 @@ export default () => {
         `;
         
         user.innerHTML = loginTemplate;
-
 
 const showOn = user.querySelector('#showOn');
 const showOff = user.querySelector('#showOff');
@@ -72,6 +71,7 @@ function validaCampo(){
     senhaAlert.textContent='';
   }
 
+  return user;
 }
 
 googleButton.addEventListener('click', ()=>{

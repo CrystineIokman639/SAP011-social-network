@@ -1,4 +1,4 @@
-/* body{
+/* .container{
     background-color: #002726;
     height: 100%;
     display: flex;
@@ -57,15 +57,17 @@ h4, .forget-password{
     cursor: pointer;
 }
 
-header{
+.topp{
     display: flex;
     justify-content: center;
+    /* background-color: rgb(0, 255, 64); */
 }
 
-form {
+.email-login {
     display: flex;
     flex-direction: column;
     align-items: center;
+    /* background-color: rgb(255, 251, 0); */
 }
  
 #email{

@@ -25,6 +25,7 @@ const init = () => {
 )}
 
 window.addEventListener ("load", () => {
+    window.location.hash="";
     main.appendChild(login());
     init(); 
 });
