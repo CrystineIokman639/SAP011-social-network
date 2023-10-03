@@ -5,7 +5,6 @@ export default () => {
     <h1>ta tudo certo</h1>
     </body>`
 
-    userFeed = template;
     userFeed.innerHTML = template;
-return userFeed;
+    return userFeed;
 }

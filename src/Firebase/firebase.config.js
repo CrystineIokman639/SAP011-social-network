@@ -25,4 +25,3 @@ const auth = getAuth(app);
 console.log(analytics)
 
 export {auth, app}
-export {auth, app, }

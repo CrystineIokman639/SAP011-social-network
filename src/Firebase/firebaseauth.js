@@ -40,4 +40,6 @@ function getUserData(){
   return JSON.parse(data);
 }
 
+
+
 export {authLogin,authByGoogle}
