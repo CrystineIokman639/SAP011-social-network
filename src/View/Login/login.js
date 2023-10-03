@@ -45,13 +45,15 @@ export default () => {
   })
 
   showOn.addEventListener('click', () => {
-    user.querySelector('#password').setAttribute('type', 'text');
+    console.log("showOn")
+    user.querySelector('#password').setAttribute('type', 'password');
     showOn.style.visibility = 'hidden';
     showOff.style.visibility = 'visible';
   })
 
   showOff.addEventListener('click', () => {
-    user.querySelector('#password').setAttribute('type', 'password');
+    console.log("showOff")
+    user.querySelector('#password').setAttribute('type', 'text');
     showOn.style.visibility = 'visible';
     showOff.style.visibility = 'hidden';
   })
