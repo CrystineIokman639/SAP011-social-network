@@ -38,30 +38,6 @@ export default () => {
 
   user.innerHTML = loginTemplate;
 
-<<<<<<< HEAD
-  const showOn = user.querySelector('#showOn');
-  const showOff = user.querySelector('#showOff');
-  const entrar = user.querySelector('#btn-login');
-
-  entrar.addEventListener('click', (e) => {
-    e.preventDefault()
-    authLogin()
-  })
-
-  showOn.addEventListener('click', () => {
-    console.log("showOn")
-    user.querySelector('#password').setAttribute('type', 'password');
-    showOn.style.visibility = 'hidden';
-    showOff.style.visibility = 'visible';
-  })
-
-  showOff.addEventListener('click', () => {
-    console.log("showOff")
-    user.querySelector('#password').setAttribute('type', 'text');
-    showOn.style.visibility = 'visible';
-    showOff.style.visibility = 'hidden';
-  })
-=======
 const showOn = user.querySelector('#showOn');
 const showOff = user.querySelector('#showOff');
 const entrar = user.querySelector('#btn-login');
@@ -95,12 +71,9 @@ function validaCampo(){
     errors.senha=false
     senhaAlert.textContent='';
   }
->>>>>>> origin/login
 
   return user;
 }
-<<<<<<< HEAD
-=======
 
 googleButton.addEventListener('click', ()=>{
   authByGoogle()
@@ -146,4 +119,3 @@ return user;
 
 
 
->>>>>>> origin/login
