@@ -6,5 +6,6 @@ export default () => {
     </body>`
 
     userFeed = template;
+    userFeed.innerHTML = template;
 return userFeed;
 }

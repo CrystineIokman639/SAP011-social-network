@@ -1,13 +1,15 @@
 import login from "./View/Login/login"
 import feed from "./View/feed/feed"
+import register from "./View/Register/register"
 // import register from "./View/register/register"
 
 const main = document.querySelector("#main");
+
 const init = () => {
     window.addEventListener("hashchange", () =>{
         main.innerHTML = ""
     switch(window.location.hash) {
-        case "":
+        case "#login":
             main.appendChild(login());
             break;
         case "#register":
