@@ -6,7 +6,7 @@ import './login.css';
 export default () => {
   const user = document.createElement('section');
   const loginTemplate = `
-  <section class="container">
+   <section class="container">
     <header class="topp">
       <img class="booknook" src="img/logo2.png" alt="logo da rede social" width="250">
     </header>
@@ -25,14 +25,14 @@ export default () => {
           <span id="pass-alert" class="pass-error"></span>
         </section>
         <button class="btn-login" id="btn-login">Entrar</button>
-        <span id="user-alert" class="user-error"></span>
+          <span id="user-alert" class="user-error"></span>
         <h2>Ou continue com</h2>
-        <img class="google" id="google-btn"  src="img/google.png" alt="logo-atual-google" width="80">
+          <img class="google" id="google-btn"  src="img/google.png" alt="logo-atual-google" width="80">
         <h3>Não possui uma conta?</h3>
-        <a class="forget-password" href='/#register'>criar conta</a>
-        </form>
-        </nav>
-        </section>
+          <a class="forget-password" href='/#register'>criar conta</a>
+      </form>
+    </nav>
+   </section>
         `;
         
         user.innerHTML = loginTemplate;
