@@ -3,25 +3,51 @@
     padding: 0;
 }
 
+.geral{
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    width: 100vw;
+    background-color: #C0E1DF;
+}
+
+.containerFeed{
+    height: 100vh;
+    width: 60vw;
+    display: contents;
+    align-items: center;
+    position: fixed;
+    z-index: 1;
+}
+
 .template {
     width: 60vw;
     margin: 0;
     padding: 0;
     display: flex;
-    flex-direction: column
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .topHeader {
     background: #002726;
     width: 100vw;
     height: 50px;
-    align-items: center;
-    justify-content: center;
+    display: flex;
+    justify-content: space-between;
 }
 
 .logo-header{
-    align-items: center;
-    justify-content: center;
+    display: flex;
+    margin-top: -5px;
+}
+
+.img-menu{
+    align-items: flex-start;
+    display: flex;
+    cursor: pointer;
+    margin-top: 5px;
 }
 
 .menu{
@@ -33,21 +59,13 @@
     justify-content: start;
 }
 
-.containerFeed{
-    height: 100vh;
-    width: 100vw;
-    margin: 0;
-    padding: 0;
-    background-color: #C0E1DF;
-}
-
 .form-feed{
     justify-content: center;
     display: flex;
 }
 
 .user-text-area{
-    resize: none;
+    resize: none; /*tira o ajuste de campo */
 }
 
 ul{
@@ -58,7 +76,21 @@ ul{
     display: block;
     width: 250px;
     height: auto;
-    margin: 10px;
     cursor: pointer;
+    display: inline-flex;
+    margin-top: 19px;
 }
 
+.titulo{
+    font-family: 'Imprima', sans-serif;
+    font-size: 22px;
+    margin-left: 12px;
+    color: rgb(0, 0, 0);
+    text-decoration: none; /*tira o sublinhado do link */
+}
+
+.logout, .feed{
+    cursor: pointer;
+    margin-left: 25px;
+
+}
