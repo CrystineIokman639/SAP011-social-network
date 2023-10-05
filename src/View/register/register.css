@@ -37,20 +37,7 @@ form {
     align-items: center;
 }
 
-#name-lastname{
-    display:flex;
-    flex-direction: column;
-    align-items: center;
-    width: 160px;
-    height: 25px;
-    padding: 0 20px;
-    margin: 10px;
-    border: 0 bottom gray;
-    border-radius: 3px;
-    text-align: center;
-}
-
-#user-name{
+#name{
     display:flex;
     flex-direction: column;
     align-items: center;
@@ -76,7 +63,7 @@ form {
     text-align: center;
 }
 
-#user-name{
+#nickname{
     display:flex;
     flex-direction: column;
     align-items: center;
@@ -89,7 +76,7 @@ form {
     text-align: center;
 }
 
-#name-lastname, #user-name, #email-reg{
+#name, #nickname, #email-reg{
     font-family: 'Imprima', sans-serif;
     margin: 10px;
     border-top: none;
