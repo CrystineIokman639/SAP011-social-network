@@ -40,7 +40,7 @@ function getUserData(){
 }
 
 // cadastro
-const registerUser = async (name, nickname, email, password) => {
+const registerUser = async ( nickname, email, password) => {
   try {
     const auth2 = getAuth(app);
     await createUserWithEmailAndPassword(auth2, email, password);
@@ -49,7 +49,6 @@ const registerUser = async (name, nickname, email, password) => {
     });
     const userData = {
       id: auth2.currentUser.uid,
-      name,
       nickname,
       email,
       photoURL: 'https://firebasestorage.googleapis.com/v0/b/gamee-97311.appspot.com/o/profilePicture%2Fprofile-icon.svg?alt=media&token=f6e9d0db-463a-4d7f-95b3-117c1465b7f6&_gl=1*1mxa0ic*_ga*MjA2OTc4NjIxMy4xNjk1ODM3OTI5*_ga_CW55HF8NVT*MTY5NTgzNzkyOS4xLjEuMTY5NTg0MTkyMC4xNS4wLjA.',
@@ -58,7 +57,7 @@ const registerUser = async (name, nickname, email, password) => {
   } catch (error) {
     console.log('Erro ao cadastrar usuário:', error.message);
   }
-  window.location.href="../#feed"
+  // window.location.href="../#feed"
 };
 
 export {authLogin, authByGoogle, registerUser}

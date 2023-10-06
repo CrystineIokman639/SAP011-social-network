@@ -11,10 +11,8 @@ export default () => {
          <img class="booknook-reg" src="img/logo2.png" alt="logo da rede social" width="250">
       </header>
      <nav class="register-container">
-      <form id="form-register">
+      <form class="form-register">
         <h1 class="register">cadastro</h1>
-         <input id="name" type="text" placeholder="Nome e Sobrenome">
-           <span id="name-alert" class="name-alert"></span>
          <input id="nickname" type="text" placeholder="Apelido">
            <span id="nickname-alert" class="nickname-ale"></span>
          <input id="email-reg" type="text" placeholder="E-mail">
@@ -43,12 +41,11 @@ export default () => {
     appContainer.appendChild(register);
 
   const form = document.getElementById('form-register')
-  const name = document.getElementById('name')
-  const username = document.getElementById('nickname')
+  const nickname = document.getElementById('nickname')
   const regEmail = document.getElementById('email-reg')
   const password = document.getElementById('password-reg')
   const passwordConfirm = document.getElementById('password-confirm')
-  const spanName = document.getElementById('name-alert')
+
   const spanNickname = document.getElementById('nickname-alert')
   const spanEmail = document.getElementById('email-alert')
   const spanPass = document.getElementById('pass-alert')
@@ -57,16 +54,18 @@ export default () => {
   form.addEventListener('submit', async (e) => {
     e.preventDefault() // previne o comportamento padrão do html
 
-    checkInputs() // quando o form for enviado ele vai executar esta function
+    getData() // quando o form for enviado ele vai executar esta function
   })
 
-  function checkInputs() { // a função para fazer a validação
-    const nameValue = name.value // .value é pra pegar as inform
-    const nicknameValue = username.value.trim() // o .trim é pra remover os espaçamentos a mais que o usuário colocar nos campos de preenchimento
-    const emailValue = regEmail.value.trim()
+  async function getData() { // a função para fazer a validação 
+    const nicknameValue = nickname.value.trim() // o .trim é pra remover os espaçamentos a mais que o usuário colocar nos campos de preenchimento
+    const emailValue = regEmail.value.trim()// .value é pra pegar as inform
     const passValue = password.value.trim()
     const passConfirmValue = passwordConfirm.value.trim()
 
+    if(nicknameValue === '') {
+      spanNickname.textContent = 'Preencha esse campo';
+    }
     if(emailValue === '') {
       spanEmail.textContent = 'Preencha esse campo';
     }
@@ -76,21 +75,16 @@ export default () => {
     if(passConfirmValue === '') {
       spanPassConfirm.textContent = 'Preencha esse campo';
     }
-    if(nameValue === '') {
-      spanName.textContent = 'Preencha esse campo';
-    }
-    if(nicknameValue === '') {
-      spanNickname.textContent = 'Preencha esse campo';
-    }
-    if(emailValue !== '' && passValue !== '' && passConfirmValue !== '' && nameValue !== '' && nicknameValue !== ''){
-      registerUser(nameValue, nicknameValue, emailValue, passValue)
+    if(emailValue !== '' && passValue !== '' && passConfirmValue !== '' && nicknameValue !== ''){
+     await registerUser(nicknameValue, emailValue, passValue)
     }
   }
+
+
 
   // mostrar e esconder senhas
   const show = register.querySelector('#show');
   const off = register.querySelector('#Off');
-  const teste = register.querySelector('#register-btn');
 
   show.addEventListener('click', () => {
     register.querySelector('#password-reg').setAttribute('type', 'password');
