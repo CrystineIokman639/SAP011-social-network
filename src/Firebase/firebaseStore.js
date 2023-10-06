@@ -1,4 +1,5 @@
-import { doc, 
+import {
+    doc,
     setDoc,
     collection,
     addDoc,
@@ -6,12 +7,14 @@ import { doc,
     updateDoc,
     arrayUnion,
     arrayRemove,
-    deleteDoc} from "firebase/firestore"; 
+    deleteDoc
+} from "firebase/firestore";
 
 
-    function createPost(text, idUser){
-        const docRef = await addDoc(collection(db, "posts"), {
-         texto: text,
-         uid: idUser
-        });
-       }
+async function createPost(text, idUser) {
+    const docRef = await addDoc(collection(db, "posts"), {
+        texto: text,
+        user: { uid: idUser }
+    });
+    return docRef
+}
