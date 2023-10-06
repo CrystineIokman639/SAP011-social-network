@@ -1,4 +1,14 @@
+import {
+  fetchPosts,
+  createPost,
+  likeCounter,
+  unlikeCounter,
+  deletePost,
+  editPost,
+} from '../../firebase/firebaseStore';
 import './feed.css';
+import { createPost } from './firestore.js';
+
 
 export default () => {
     const userFeed = document.createElement('section');
@@ -41,6 +51,28 @@ export default () => {
           itens.style.display = "block";
       }
   }
+
+  const content = `
+     <section class="conteudo">
+       <p class="name">${post.username}</p>
+     </section>
+     <section class="text">${parseContent(post.text)}</section>
+     <section class="container-edit">
+      ${editButton}
+      ${deleteButton}
+     </section>
+  `;
+  childPost.innerHTML = content;
+
+  const publicarBtn = ..........;
+
+  publicarBtn.addEventListener('click', () => {
+    const texto = ......... .value;
+    
+    createPost(texto, idUser);
+  });
+
+
 
 
 return userFeed;
