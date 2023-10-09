@@ -1,6 +1,6 @@
 import './register.css';
 import { registerUser, authLogin } from '../../Firebase/firebaseauth';
-import { async } from 'regenerator-runtime';
+// import { async } from 'regenerator-runtime';
 
 export default () => {
   const register = document.createElement('section');
@@ -14,7 +14,7 @@ export default () => {
       <form class="form-register">
         <h1 class="register">cadastro</h1>
          <input id="nickname" type="text" placeholder="Apelido">
-           <span id="nickname-alert" class="nickname-ale"></span>
+           <span id="nickname-alert" class="nickname-alert"></span>
          <input id="email-reg" type="text" placeholder="E-mail">
            <span id="email-alert" class="email-alert"></span>
         <section class="pass-register">
@@ -40,22 +40,23 @@ export default () => {
     const appContainer = document.querySelector('#main');
     appContainer.appendChild(register);
 
-  const form = document.getElementById('form-register')
-  const nickname = document.getElementById('nickname')
-  const regEmail = document.getElementById('email-reg')
-  const password = document.getElementById('password-reg')
-  const passwordConfirm = document.getElementById('password-confirm')
+  const form = appContainer.querySelector('.form-register')
+  const nickname = appContainer.querySelector('#nickname')
+  const regEmail = appContainer.querySelector('#email-reg')
+  const password = appContainer.querySelector('#password-reg')
+  const passwordConfirm = appContainer.querySelector('#password-confirm')
+  const buttonRegister = appContainer.querySelector('#register-btn')
 
-  const spanNickname = document.getElementById('nickname-alert')
-  const spanEmail = document.getElementById('email-alert')
-  const spanPass = document.getElementById('pass-alert')
-  const spanPassConfirm = document.getElementById('pass-different')
+  const spanNickname = appContainer.querySelector('#nickname-alert')
+  const spanEmail = appContainer.querySelector('#email-alert')
+  const spanPass = appContainer.querySelector('#pass-alert')
+  const spanPassConfirm = appContainer.querySelector('#pass-different')
 
-  form.addEventListener('submit', async (e) => {
+  form.addEventListener('submit', (e) => {
     e.preventDefault() // previne o comportamento padrão do html
 
     getData() // quando o form for enviado ele vai executar esta function
-  })
+  });
 
   async function getData() { // a função para fazer a validação 
     const nicknameValue = nickname.value.trim() // o .trim é pra remover os espaçamentos a mais que o usuário colocar nos campos de preenchimento
@@ -76,17 +77,16 @@ export default () => {
       spanPassConfirm.textContent = 'Preencha esse campo';
     }
     if(emailValue !== '' && passValue !== '' && passConfirmValue !== '' && nicknameValue !== ''){
-     await registerUser(nicknameValue, emailValue, passValue)
-    }
+
+    await registerUser(nicknameValue, emailValue, passValue)
+    };
   }
-
-
-
   // mostrar e esconder senhas
   const show = register.querySelector('#show');
   const off = register.querySelector('#Off');
 
   show.addEventListener('click', () => {
+    console.log("clique no show")
     register.querySelector('#password-reg').setAttribute('type', 'password');
     show.style.visibility = 'hidden';
     off.style.visibility = 'visible';
@@ -114,5 +114,4 @@ export default () => {
   });
   
   return register;
-
 }

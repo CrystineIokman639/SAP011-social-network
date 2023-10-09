@@ -57,7 +57,7 @@ const registerUser = async ( nickname, email, password) => {
   } catch (error) {
     console.log('Erro ao cadastrar usuário:', error.message);
   }
-  // window.location.href="../#feed"
+  window.location.href="../#feed"
 };
 
 export {authLogin, authByGoogle, registerUser}
