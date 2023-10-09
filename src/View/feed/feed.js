@@ -1,13 +1,13 @@
-// import {
-//   fetchPosts,
-//   createPost,
-//   likeCounter,
-//   unlikeCounter,
-//   deletePost,
-//   editPost,
-// } from '../../firebase/firebaseStore';
+import {
+  fetchPosts,
+  createPost,
+  likeCounter,
+  unlikeCounter,
+  deletePost,
+  editPost,
+} from '../../firebase/firebaseStore';
 import './feed.css';
-// import { createPost } from './firestore.js';
+import { createPost } from './firestore.js';
 
 
 export default () => {
@@ -33,6 +33,7 @@ export default () => {
       <section class="template">
         <form class='form-feed'>
           <textarea class="user-text-area" placeholder="O que está lendo?"></textarea>
+          <button id="add-post" class="button-post"> Postar </button>
         </form>
       </section>
    </nav>
@@ -52,18 +53,28 @@ export default () => {
       }
   }
 
-  // const content = `
-  //    <section id="create-post" class="conteudo">
-  //      <p class="name">${post.username}</p>
-  //    </section>
-  //    <form id="post-form">
-  //           <textarea id="post-text" 
-  //           placeholder="Digite seu post aqui">
-  //           </textarea>
-  //           <button type="submit">Publicar</button>
-  //    </form>
+  const content = `
+     <section class="conteudo">
+       <p class="name">${post.username}</p>
+     </section>
+     <section class="text">${parseContent(post.text)}</section>
+     <section class="container-edit">
+      ${editButton}
+      ${deleteButton}
+     </section>
+  `;
+  childPost.innerHTML = content;
+
+  const publicarBtn = ..........;
+
+  publicarBtn.addEventListener('click', () => {
+    const texto = ......... .value;
     
-  // `;
+    createPost(texto, idUser);
+  });
+
+
+
 
 return userFeed;
 }
