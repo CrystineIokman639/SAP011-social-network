@@ -77,8 +77,10 @@ export default () => {
       spanPassConfirm.textContent = 'Preencha esse campo';
     }
     if(emailValue !== '' && passValue !== '' && passConfirmValue !== '' && nicknameValue !== ''){
-
-    await registerUser(nicknameValue, emailValue, passValue)
+    // if (auth.currentUser) {
+    //   window.location.href = '#feed';
+    // }
+      await registerUser(nicknameValue, emailValue, passValue)
     };
   }
   // mostrar e esconder senhas
