@@ -9,6 +9,7 @@ import {
     arrayRemove,
     deleteDoc
 } from "firebase/firestore";
+import { db } from "./firebase.config";
 
 
 async function createPost(text, idUser) {
@@ -17,4 +18,9 @@ async function createPost(text, idUser) {
         user: { uid: idUser }
     });
     return docRef
+}
+
+export async function deletePost(id){
+   const resp = await deleteDoc(doc(db,"posts",id))
+   return resp
 }
