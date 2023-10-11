@@ -1,13 +1,13 @@
-import {
-  fetchPosts,
-  createPost,
-  likeCounter,
-  unlikeCounter,
-  deletePost,
-  editPost,
-} from '../../firebase/firebaseStore';
+// import {
+//   fetchPosts,
+//   createPost,
+//   likeCounter,
+//   unlikeCounter,
+//   deletePost,
+//   editPost,
+// } from '../../firebase/firebaseStore';
 import './feed.css';
-import { createPost } from './firestore.js';
+// import { createPost } from './firestore.js';
 
 
 export default () => {
@@ -32,14 +32,39 @@ export default () => {
     </ul>
       <section class="template">
         <form class='form-feed'>
-          <textarea class="user-text-area" placeholder="O que está lendo?"></textarea>
-          <button id="add-post" class="button-post"> Postar </button>
+          <textarea id="user-text-area" class="user-text-area" placeholder="O que está lendo?"></textarea>
+          <button id="add-post" class="button-post">Postar</button>
         </form>
       </section>
    </nav>
   </section>`
+  userFeed.innerHTML = template;
 
-    userFeed.innerHTML = template;
+  const postButton = userFeed.querySelector("#add-post");
+
+//ouvinte
+postButton.addEventListener("click", async function(event) {
+    event.preventDefault();
+
+    // pegar o texto do campo de texto
+    const postText = document.querySelector(".user-text-area").value;
+
+    // Verifica se o post não está vazio
+    if (postText.trim() !== "") {
+        // Chame a função createPost para enviar ao Firestore
+        const userUid = "ID_DO_USUARIO"; // Substituir pelo ID do usuário atual
+        const docRef = await createPost(postText, userUid);
+
+        // Limpa o campo de publicar
+        document.querySelector(".user-text-area").value = "";
+
+        console.log("Post criado com sucesso. ID do documento:", docRef.id);
+    } else {
+        console.log("O campo de texto está vazio. O post não foi enviado.");
+    }
+});
+
+
     
     const imgMenu = userFeed.querySelector('.img-menu');
     imgMenu.onclick = clickMenu;
@@ -52,28 +77,6 @@ export default () => {
           itens.style.display = "block";
       }
   }
-
-  const content = `
-     <section class="conteudo">
-       <p class="name">${post.username}</p>
-     </section>
-     <section class="text">${parseContent(post.text)}</section>
-     <section class="container-edit">
-      ${editButton}
-      ${deleteButton}
-     </section>
-  `;
-  childPost.innerHTML = content;
-
-  const publicarBtn = ..........;
-
-  publicarBtn.addEventListener('click', () => {
-    const texto = ......... .value;
-    
-    createPost(texto, idUser);
-  });
-
-
 
 
 return userFeed;

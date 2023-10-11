@@ -14,7 +14,8 @@ import {
 async function createPost(text, idUser) {
     const docRef = await addDoc(collection(db, "posts"), {
         texto: text,
-        user: { uid: idUser }
+        user: { uid: idUser },
+        timestamp: timestamp
     });
     return docRef
 }
