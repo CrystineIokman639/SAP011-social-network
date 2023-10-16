@@ -129,5 +129,28 @@ postButton.addEventListener("click", async function(event) {
 //   }
 
 
-return userFeed;
+    return userFeed;
 }
+
+
+
+
+
+
+
+
+
+
+/* <ul class="menu">
+      <li>
+       Feed
+      </li>
+
+      <li>
+       Sair
+      </li>
+
+      <li>
+       Meu Perfil
+      </li>
+    </ul> */

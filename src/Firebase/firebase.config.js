@@ -28,3 +28,6 @@ export const dbUsers = collection(db, "users");
 export const dbPosts = collection(db, "posts");
 
 export {auth, app, }
+console.log(analytics)
+
+export {auth, app}
