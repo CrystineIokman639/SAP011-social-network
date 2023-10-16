@@ -104,13 +104,13 @@ export default () => {
   const off1 = register.querySelector('#Off1');
 
   show1.addEventListener('click', () => {
-    register.querySelector('#password-confirm').setAttribute('type', 'password');
+    register.querySelector('#password-confirm').setAttribute('type', 'text');
     show1.style.visibility = 'hidden';
     off1.style.visibility = 'visible';
   })
 
   off1.addEventListener('click', () => {
-    register.querySelector('#password-confirm').setAttribute('type', 'text');
+    register.querySelector('#password-confirm').setAttribute('type', 'password');
     show1.style.visibility = 'visible';
     off1.style.visibility = 'hidden';
   });
