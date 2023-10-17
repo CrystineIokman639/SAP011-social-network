@@ -19,24 +19,20 @@ function authByGoogle (){
   const provider = new GoogleAuthProvider()
   signInWithPopup(auth, provider)
   .then((result) => {
-    const credential = GoogleAuthProvider.credentialFromResult(result);
     // acrescentei os dados a baixo para ir para o feed
     const user = JSON.stringify(result.user);
     window.localStorage.setItem("auth",user)
     window.location.href="/#feed"
 
   }).catch((error) => {
-    const errorCode = error.code;
-    const errorMessage = error.message;
-    const email = error.customData.email;
-    const credential = GoogleAuthProvider.credentialFromError(error);
+    console.log(error)
   });
 }
 // recupera os dados de autenticação do usuario
-// function getUserData(){
-//   let data=window.localStorage.getItem("auth");
-//   return JSON.parse(data);
-// }
+function getUserData(){
+  let data=window.localStorage.getItem("auth");
+  return JSON.parse(data);
+}
 
 // cadastro
 const registerUser = async ( nickname, email, password) => {
