@@ -1,6 +1,5 @@
-import { signInWithEmailAndPassword,signInWithPopup, GoogleAuthProvider  } from 'firebase/auth';
+import { signInWithEmailAndPassword,signInWithPopup, GoogleAuthProvider, createUserWithEmailAndPassword } from 'firebase/auth';
 import {auth, app} from './firebase.config';
-import {createUserWithEmailAndPassword} from 'firebase/auth';
 
 
 function authLogin (email,password){
@@ -20,17 +19,13 @@ function authByGoogle (){
   const provider = new GoogleAuthProvider()
   signInWithPopup(auth, provider)
   .then((result) => {
-    const credential = GoogleAuthProvider.credentialFromResult(result);
     // acrescentei os dados a baixo para ir para o feed
     const user = JSON.stringify(result.user);
     window.localStorage.setItem("auth",user)
     window.location.href="/#feed"
 
   }).catch((error) => {
-    const errorCode = error.code;
-    const errorMessage = error.message;
-    const email = error.customData.email;
-    const credential = GoogleAuthProvider.credentialFromError(error);
+    console.log(error)
   });
 }
 // recupera os dados de autenticação do usuario
@@ -42,9 +37,19 @@ function getUserData(){
 // cadastro
 const registerUser = async ( nickname, email, password) => {
   try {
+    const auth2 = getAuth(app);
     await createUserWithEmailAndPassword(auth, email, password).then((user) => {
       console.log(user)
     });
+    await updateProfile(auth2.currentUser, {
+      displayName: username,
+    });
+    const userData = {
+      id: auth2.currentUser.uid,
+      username,
+      email,
+    };
+    await setDoc(doc(db, 'users', `${email}`), userData);
   } catch (error) {
     console.log('Erro ao cadastrar usuário:', error.message);
   }

@@ -1,17 +1,13 @@
-// import {
-//   fetchPosts,
-//   createPost,
-//   likeCounter,
-//   unlikeCounter,
-//   deletePost,
-//   editPost,
-// } from '../../firebase/firebaseStore';
+import {
+  createPost,
+  getPosts
+} from '../../Firebase/firebaseStore.js';
 import './feed.css';
-import {createPost} from '../../Firebase/firebaseStore.js';
 
 export default () => {
-    const userFeed = document.createElement('section');
-    const template = ` 
+  console.log("passou aqui")
+  const userFeed = document.createElement('section');
+  const template = ` 
   <section class="geral">
    <nav class="containerFeed">
      <header class="topHeader">
@@ -41,8 +37,8 @@ export default () => {
 
   const postButton = userFeed.querySelector("#add-post");
 
-//ouvinte
-postButton.addEventListener("click", async function(event) {
+  //ouvinte
+  postButton.addEventListener("click", async function (event) {
     event.preventDefault();
 
     // pegar o texto do campo de texto
@@ -50,84 +46,59 @@ postButton.addEventListener("click", async function(event) {
 
     // Verifica se o post não está vazio
     if (postText.trim() !== "") {
-        // Chame a função createPost para enviar ao Firestore
-        const userUid = "ID_DO_USUARIO"; // Substituir pelo ID do usuário atual
-        const docRef = await createPost(postText, userUid);
+      // Chame a função createPost para enviar ao Firestore
+      const userUid = "ID_DO_USUARIO";
+      const docRef = await createPost(postText, userUid);
 
-        // Limpa o campo de publicar
-        document.querySelector(".user-text-area").value = "";
+      // Limpa o campo de publicar
+      document.querySelector(".user-text-area").value = "";
 
-        console.log("Post criado com sucesso. ID do documento:", docRef.id);
+      console.log("Post criado com sucesso. ID do documento:", docRef.id);
     } else {
-        console.log("O campo de texto está vazio. O post não foi enviado.");
+      console.log("O campo de texto está vazio. O post não foi enviado.");
     }
-});
+  });
 
-//  função de recuperação de posts do Firestore
-// async function getPosts() {
-//   const postsCollection = collection(db, "posts");
-  
-//   try {
-//       const querySnapshot = await getDocs(postsCollection);
-//       const posts = [];
+  //  função de recuperação de posts do Firestore
 
-//       querySnapshot.forEach((doc) => {
-//           // Aqui você pode mapear os dados de cada documento para o formato desejado
-//           // Por exemplo, você pode incluir o ID do documento no objeto de post
-//           const post = {
-//               id: doc.id,
-//               ...doc.data(),
-//           };
-//           posts.push(post);
-//       });
+  //   Função para Renderizar os Posts
+  async function renderPosts() {
+    console.log("funcionou o render que busca o post")
+    // Obtenha os posts do Firestore
+    const posts = await getPosts(); // Implementa a função getPosts que busca os posts no Firestore
 
-//       return posts;
-//   } catch (error) {
-//       console.error("Erro ao buscar posts do Firestore:", error);
-//       return [];
-//   }
-// }
+    // Selecione o contêiner do feed no seu HTML
+    const feedContainer = userFeed.querySelector(".form-feed");
 
-// //   Função para Renderizar os Posts
-// async function renderPosts() {
-//   // Obtenha os posts do Firestore
-//   const posts = await getPosts(); // Implemente a função getPosts que busca os posts no Firestore
+    // Limpe o feed (caso deseje recarregar os posts)
+    // feedContainer.innerHTML = ""; ta retornando null aquiii erro
 
-//   // Selecione o contêiner do feed no seu HTML
-//   const feedContainer = document.querySelector("#feed-container");
-
-//   // Limpe o feed (caso deseje recarregar os posts)
-//   feedContainer.innerHTML = "";
-
-//   // Renderize cada post no feed
-//   posts.forEach((post) => {
-//       const postElement = document.createElement("div");
-//       postElement.innerHTML = `<p>${post.texto}</p>`; // Adapte o HTML conforme necessário
-//       feedContainer.appendChild(postElement);
-//   });
-// }
-
-// // Chama a Função renderPosts Quando a Página Carrega
-// userFeed.addEventListener("load", () => {
-//   renderPosts();
-// });
-
-// // atualiza o feed com o novo post
-// await createPost(postText, userUid);
-// renderPosts();
-    
-//     const imgMenu = userFeed.querySelector('.img-menu');
-//     imgMenu.onclick = clickMenu;
-
-//     function clickMenu() {
-//       const itens = document.getElementById('itens');
-//       if (itens.style.display === "block") {
-//           itens.style.display = "none";
-//       } else {
-//           itens.style.display = "block";
-//       }
-//   }
+    // Renderize cada post no feed
+    posts.forEach((post) => {
+      const postElement = document.createElement("section");
+      postElement.innerHTML = `<p>${post.texto}</p>`; // Adapte o HTML conforme necessário
+      feedContainer.appendChild(postElement);
+    });
+  }
 
 
-return userFeed;
+
+  // Chama a Função renderPosts Quando a Página Carrega
+  console.log("passou")
+  renderPosts();
+
+  const imgMenu = userFeed.querySelector('.img-menu');
+  imgMenu.onclick = clickMenu;
+
+  function clickMenu() {
+    const itens = document.getElementById('itens');
+    if (itens.style.display === "block") {
+      itens.style.display = "none";
+    } else {
+      itens.style.display = "block";
+    }
+  }
+
+
+  return userFeed;
 }

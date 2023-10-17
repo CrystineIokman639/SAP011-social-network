@@ -1,5 +1,5 @@
 import login from "./View/Login/login"
-import feed from "./View/feed/feed"
+import feed from "./view/feed/feed.js"
 import register from "./View/Register/register"
 // import register from "./View/register/register"
 
@@ -19,7 +19,7 @@ const init = () => {
             main.appendChild(feed());
             break;
             default:
-                main.appendChild(login());
+            main.appendChild(login());
     }
     }
 )}
