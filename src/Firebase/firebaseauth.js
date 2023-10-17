@@ -1,5 +1,7 @@
 import { signInWithEmailAndPassword,signInWithPopup, GoogleAuthProvider  } from 'firebase/auth';
-import {auth,app} from './firebase.config';
+import {auth, app} from './firebase.config';
+import {createUserWithEmailAndPassword} from 'firebase/auth';
+
 
 function authLogin (email,password){
   signInWithEmailAndPassword(auth, email, password)
@@ -37,4 +39,16 @@ function getUserData(){
   return JSON.parse(data);
 }
 
-export {authLogin,authByGoogle}
+// cadastro
+const registerUser = async ( nickname, email, password) => {
+  try {
+    await createUserWithEmailAndPassword(auth, email, password).then((user) => {
+      console.log(user)
+    });
+  } catch (error) {
+    console.log('Erro ao cadastrar usuário:', error.message);
+  }
+  window.location.href="../#feed"
+};
+
+export {authLogin, authByGoogle, registerUser}

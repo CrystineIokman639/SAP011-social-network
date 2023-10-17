@@ -1,21 +1,16 @@
 import {
-    doc,
-    setDoc,
     collection,
-    addDoc,
-    getDocs,
-    updateDoc,
-    arrayUnion,
-    arrayRemove,
-    deleteDoc
+    addDoc
 } from "firebase/firestore";
 import { db } from "./firebase.config";
 
 
-async function createPost(text, idUser) {
+export async function createPost(text, idUser) {
     const docRef = await addDoc(collection(db, "posts"), {
         texto: text,
-        user: { uid: idUser }
+        user: { uid: idUser },
+        timestamp: serverTimestamp() // Cria um timestamp representando a data/hora do servidor
+
     });
     return docRef
 }
