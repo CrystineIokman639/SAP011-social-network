@@ -3,7 +3,6 @@ import {
   getPosts
 } from '../../Firebase/firebaseStore.js';
 import './feed.css';
-import {createPost} from '../../Firebase/firebaseStore.js';
 export default () => {
   console.log("passou aqui")
   const userFeed = document.createElement('section');

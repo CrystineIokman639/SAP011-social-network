@@ -1,7 +1,6 @@
 import login from "./View/Login/login"
-import feed from "./view/feed/feed.js"
+import feed from "./View/feed/feed"
 import register from "./View/Register/register"
-// import register from "./View/register/register"
 
 const main = document.querySelector("#main");
 
