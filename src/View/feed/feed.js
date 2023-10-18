@@ -71,12 +71,23 @@ export default () => {
     const feedContainer = userFeed.querySelector(".form-feed");
 
     // Limpe o feed (caso deseje recarregar os posts)
+<<<<<<< HEAD
      feedContainer.innerHTML = ""; 
+=======
+    feedContainer.innerHTML = "";
+>>>>>>> ddadf25b7aee37a9e4a316348221d197d60f3b4c
 
     // Renderize cada post no feed
     posts.forEach((post) => {
       const postElement = document.createElement("section");
-      postElement.innerHTML = `<p>${post.texto}</p>`; // Adapte o HTML conforme necessário
+      postElement.className = "post";
+      postElement.innerHTML = `
+       <section class="posts">
+          <section class="container-text-post">
+           <p class="text">${post.texto}</p>
+          </section>
+       </section>
+       `;
       feedContainer.appendChild(postElement);
     });
   }
