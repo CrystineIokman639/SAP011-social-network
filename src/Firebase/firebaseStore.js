@@ -2,7 +2,9 @@ import {
     collection,
     addDoc,
     serverTimestamp,
-    getDocs
+    query,
+    getDocs,
+    orderBy
 } from "firebase/firestore";
 import {
     db
@@ -20,7 +22,7 @@ export async function createPost(text, idUser) {
 }
 
 export async function getPosts() {
-    const postsCollection = collection(db, "posts");
+    const postsCollection = query(collection(db, "posts"), orderBy("timestamp", "asc"));
 
     try {
         const querySnapshot = await getDocs(postsCollection);
