@@ -1,42 +1,12 @@
 // importamos la funcion que vamos a testear
-import { authLogin, authByGoogle, registerUser } from '../src/Firebase/firebaseauth.js';
-import {
-  signInWithPopup,
-  signInWithEmailAndPassword,
-  signOut,
-  auth,
-  onAuthStateChanged,
-  createUserWithEmailAndPassword,
-  getAuth,
-  updateProfile,
-} from '../src/Firebase/firebase/auth';
-
+import { authLogin, authByGoogle, registerUser } from '../src/Firebase/firebaseauth';
+import { authByGoogle, authLogin, registerUser } from '../src/firebase/firebaseauth';
 // import {
-//   setDoc, doc, deleteDoc, updateDoc, collection, getDocs, orderBy, query, serverTimestamp,
-//   getDoc, db, where,
+//   collection, getPosts, renderPosts
 // } from 'firebase/firestore';
 
-import {
-  signInWithGoogle,
-  signInWithGitHub,
-  authLogin,
-  logOut,
-  registerUserWithAnotherProvider,
-  registerUser,
-  isUserLoggedIn,
-  deletePost,
-  editPost,
-  calculateTimeAgo,
-  createPost,
-  listAllPosts,
-  likePost,
-  deslikePost,
-  checkLikedPosts,
-  changeNickNameAllPosts,
-  editProfile,
-} from '../src/firebase/firebase.js';
 
-const mockAuth = {
+const mock = {
   currentUser: {
     displayName: 'Spock',
     email: 'spock@gmail.com',
