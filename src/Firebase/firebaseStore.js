@@ -4,7 +4,8 @@ import {
     serverTimestamp,
     query,
     getDocs,
-    orderBy
+    orderBy,
+    onSnapshot
 } from "firebase/firestore";
 import {
     db
@@ -21,25 +22,37 @@ export async function createPost(text, idUser) {
     return docRef
 }
 
-export async function getPosts() {
+export async function getPosts(callback) {
     const postsCollection = query(collection(db, "posts"), orderBy("timestamp", "asc"));
-
-    try {
-        const querySnapshot = await getDocs(postsCollection);
+    onSnapshot (postsCollection, function(querySnapshot){
         const posts = [];
 
-        querySnapshot.forEach((doc) => {
-            // é aqui que você pode mapear os dados de cada documento para o formato desejado crys
-            const post = {
-                id: doc.id,
-                ...doc.data(),
-            };
+         querySnapshot.forEach((doc) => {
+             // é aqui que você pode mapear os dados de cada documento para o formato desejado crys
+             const post = {
+                 id: doc.id,
+                 ...doc.data(),
+             };
             posts.push(post);
-        });
+         });
+         callback(posts);
+    })
+    // try {
+    //     const querySnapshot = await getDocs(postsCollection);
+    //     const posts = [];
 
-        return posts;
-    } catch (error) {
-        console.error("Erro ao buscar posts do Firestore:", error);
-        return [];
-    }
+    //     querySnapshot.forEach((doc) => {
+    //         // é aqui que você pode mapear os dados de cada documento para o formato desejado crys
+    //         const post = {
+    //             id: doc.id,
+    //             ...doc.data(),
+    //         };
+    //         posts.push(post);
+    //     });
+
+    //     return posts;
+    // } catch (error) {
+    //     console.error("Erro ao buscar posts do Firestore:", error);
+    //     return [];
+    // }
 }

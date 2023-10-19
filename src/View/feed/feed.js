@@ -25,10 +25,12 @@ export default () => {
        <a class="titulo" href="/#login">Sair</a>
      </li>
     </ul>
-      <section class="template">
+      <section class="bodyFeed">
+       <main class="containerPubli">
+         <textarea id="user-text-area" class="user-text-area" placeholder="O que está lendo?"></textarea>
+         <button id="add-post" class="button-post">Postar</button>
+       </main>
         <form class='form-feed'>
-          <textarea id="user-text-area" class="user-text-area" placeholder="O que está lendo?"></textarea>
-          <button id="add-post" class="button-post">Postar</button>
         </form>
       </section>
    </nav>
@@ -62,12 +64,9 @@ export default () => {
   //  função de recuperação de posts do Firestore
 
   //   Função para Renderizar os Posts
-  async function renderPosts() {
+  async function renderPosts(posts) {
     console.log("funcionou o render que busca o post")
-    // Obtenha os posts do Firestore
-    const posts = await getPosts(); // Implementa a função getPosts que busca os posts no Firestore
 
-    // Selecione o contêiner do feed no seu HTML
     const feedContainer = userFeed.querySelector(".form-feed");
 
     // Limpe o feed (caso deseje recarregar os posts)
@@ -88,11 +87,8 @@ export default () => {
     });
   }
 
-
-
-  // Chama a Função renderPosts Quando a Página Carrega
   console.log("passou")
-  renderPosts();
+  getPosts(renderPosts);
 
   const imgMenu = userFeed.querySelector('.img-menu');
   imgMenu.onclick = clickMenu;

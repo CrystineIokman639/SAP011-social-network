@@ -13,7 +13,7 @@
 }
 
 .containerFeed{
-    height: 100vh;
+    min-height: 100vh;
     width: 60vw;
     display: contents;
     background-color: #C0E1DF;
@@ -22,11 +22,11 @@
     z-index: 1;
 }
 
-.template {
-    width: 60vw;
+.bodyFeed {
+    min-height: 100vh;
     margin: 0;
     padding: 0;
-    margin-left: 250px;
+    background-color: #C0E1DF;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -67,6 +67,7 @@
 .form-feed{
     justify-content: center;
     display: flex;
+    flex-direction: column-reverse;
 }
 
 .posts {
@@ -111,8 +112,39 @@
     padding: 2px;
 } */
 
+.button-post{
+    background-color: #007bff;
+    width: 40px;
+    height: 20px;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    display: bottom;
+    margin: 1px;
+    padding: 2px;
+}
+
+.containerPubli{
+    display: flex;
+    justify-content: center;
+    width: 35vw;
+    height: 20vh;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    padding: 10px;
+    margin: 10px;
+}
+
 .user-text-area{
     resize: none; /*tira o ajuste de campo */
+    background-color: aqua;
+    margin-top: 10px;
+    width: 35vw;
+    height: 15vh;
+    border-radius: 20px;
 }
 
 ul{
