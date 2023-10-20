@@ -27,8 +27,10 @@ export default () => {
     </ul>
       <section class="bodyFeed">
        <main class="containerPubli">
-         <textarea id="user-text-area" class="user-text-area" placeholder="O que está lendo?"></textarea>
-         <button id="add-post" class="button-post">Postar</button>
+       <textarea id="user-text-area" class="user-text-area" placeholder="O que está lendo?"></textarea>
+        <nav class="area-button-postar">
+        <button id="add-post" class="button-post">Postar</button>
+        </nav>
        </main>
         <form class='form-feed'>
         </form>
@@ -77,12 +79,13 @@ export default () => {
       const postElement = document.createElement("section");
       postElement.className = "post";
       postElement.innerHTML = `
-       <section class="posts">
+        <section class="posts">
+          <span class="nickname">${post.user.nickname}</span>
           <section class="container-text-post">
-           <p class="text">${post.texto}</p>
+            <p class="text">${post.texto}</p>
           </section>
-       </section>
-       `;
+        </section>
+      `;
       feedContainer.appendChild(postElement);
     });
   }

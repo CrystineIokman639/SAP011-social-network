@@ -14,7 +14,6 @@
 
 .containerFeed{
     min-height: 100vh;
-    width: 60vw;
     display: contents;
     background-color: #C0E1DF;
     align-items: center;
@@ -73,8 +72,8 @@
 .posts {
     display: flex;
     justify-content: center;
-    width: 35vw;
-    height: 20vh;
+    width: 480px;
+    height: 140px;
     border: 1px solid #ccc;
     border-radius: 20px;
     background-color: rgb(255, 255, 255);
@@ -83,11 +82,17 @@
     margin: 10px;
   }
 
+.nickname{
+    width: 69px;
+    height: 19px;
+    z-index: 10;
+}
+
 .container-text-post{
     background-color: aqua;
-    margin-top: 14px;
-    width: 35vw;
-    height: 15vh;
+    margin-top: 25px;
+    width: 410px;
+    height: 100px;
     border-radius: 20px;
 }
 
@@ -114,37 +119,61 @@
 
 .button-post{
     background-color: #007bff;
-    width: 40px;
-    height: 20px;
+    border-radius: 8px;
+    min-width: 45px;
+    min-height: 20px;
     color: #fff;
     border: none;
     padding: 5px 10px;
     cursor: pointer;
-    display: bottom;
-    margin: 1px;
-    padding: 2px;
+    display: flex;
+    margin-top: -50px; /* Ajuste conforme necessário */
+    margin-left: -20px;
+    position: absolute;
+    bottom: 1px;
+    right: 6px;
+    z-index: 2;
+}
+
+.area-button-postar{
+    width: 40px;
+    height: 20px;
+    margin-top: -50px; /* Ajuste conforme necessário */
+    margin-left: -20px;
+    position: absolute;
+    bottom: 2px;
+    right: 6px;
+    z-index: 2;
 }
 
 .containerPubli{
     display: flex;
     justify-content: center;
-    width: 35vw;
-    height: 20vh;
+    width: 480px;
+    height: 140px;
     border: 1px solid #ccc;
     border-radius: 20px;
     background-color: rgb(255, 255, 255);
     display: flex;
     padding: 10px;
     margin: 10px;
+    position: relative; 
 }
 
 .user-text-area{
-    resize: none; /*tira o ajuste de campo */
-    background-color: aqua;
+    resize: none;
+    background-color: #E3F3F2;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
     margin-top: 10px;
-    width: 35vw;
-    height: 15vh;
+    padding: 5px;
+    width: 410px;
+    height: 100px;
+    border: none;
     border-radius: 20px;
+    z-index: 10;
 }
 
 ul{
