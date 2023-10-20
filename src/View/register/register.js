@@ -77,9 +77,7 @@ export default () => {
       spanPassConfirm.textContent = 'Preencha esse campo';
     }
     if(emailValue !== '' && passValue !== '' && passConfirmValue !== '' && nicknameValue !== ''){
-    // if (auth.currentUser) {
-    //   window.location.href = '#feed';
-    // }
+    
       await registerUser(nicknameValue, emailValue, passValue)
     };
   }
