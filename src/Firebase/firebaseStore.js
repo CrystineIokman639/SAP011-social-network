@@ -47,13 +47,4 @@ export async function getPosts(callback) {
         callback(posts);
     })
 
-<<<<<<< HEAD
-        return posts;
-    } catch (error) {
-        console.error("Erro ao buscar posts do Firestore:", error);
-        return [];
-    }
 }
-=======
-}
->>>>>>> 2ab92cf4f60d2a63939fa2ae34212774e47a9ffd
