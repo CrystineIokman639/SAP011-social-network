@@ -48,3 +48,15 @@ export async function getPosts(callback) {
     })
 
 }
+
+export async function deletePost(id) {
+    const resp = await deleteDoc(doc(db, "posts", id))
+    return resp
+}
+    
+export function atualizaPost(postId, novoTexto) {
+    const postRef = doc(db, "posts", postId);
+    updateDoc(postRef, {
+        text: novoTexto
+    });  
+}

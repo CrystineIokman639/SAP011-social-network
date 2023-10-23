@@ -74,6 +74,7 @@ export default () => {
     // Limpe o feed (caso deseje recarregar os posts)
     feedContainer.innerHTML = "";
 
+    console.log(posts)
     // Renderize cada post no feed
     posts.forEach((post) => {
       const postElement = document.createElement("section");
@@ -83,11 +84,34 @@ export default () => {
           <span class="nickname">${post.user.nickname}</span>
           <section class="container-text-post">
             <p class="text">${post.texto}</p>
+            <button class="edit-button" id="${post.id}-edit-button" >edit</button>
+            <button class="delete-button" id="${post.id}-delete-button" >Delete</button>
           </section>
         </section>
       `;
       feedContainer.appendChild(postElement);
     });
+
+    posts.forEach((post)=>{
+      const buttonEdit = document.getElementById(`${post.id}-edit-button`)
+      buttonEdit.addEventListener("click",(e)=>{
+        e.preventDefault()
+        EditarPostButton(post.id,post.texto)
+      })
+      const buttonDelete = document.getElementById(`${post.id}-delete-button`)
+      buttonDelete.addEventListener("click",(e)=>{
+        e.preventDefault()
+        DeletePostButton(post.id)
+      })
+    })
+  }
+
+  function EditarPostButton(id,text){
+    console.log(id,text)
+  }
+
+  function DeletePostButton(id){
+    console.log(id)
   }
 
   console.log("passou")
