@@ -72,6 +72,7 @@
 .posts {
     display: flex;
     justify-content: center;
+    position: relative;
     width: 480px;
     height: 140px;
     border: 1px solid #ccc;
@@ -86,6 +87,10 @@
     width: 69px;
     height: 19px;
     z-index: 10;
+    position: absolute;
+    text-align: left;
+    display: flex;
+    justify-content: right;
 }
 
 .container-text-post{
@@ -102,6 +107,7 @@
     justify-content: center;
     align-items: center;
     font-size: large;
+    margin: 10px;
 }
 
 /* .edit-button {
