@@ -6,6 +6,8 @@ import {
     getDocs,
     orderBy,
     onSnapshot,
+    deleteDoc,
+    doc,
 } from "firebase/firestore";
 import {
     db

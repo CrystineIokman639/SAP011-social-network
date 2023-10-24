@@ -1,5 +1,6 @@
 import {
   createPost,
+  deletePost,
   getPosts
 } from '../../Firebase/firebaseStore.js';
 import './feed.css';
@@ -9,6 +10,12 @@ export default () => {
   const userFeed = document.createElement('section');
   const template = ` 
   <section class="geral">
+  <div class="modal">
+      <div class="modal-content">
+        <span class="close-button">×</span>
+        <h1>Hello, I am a modal!</h1>
+      </div>
+    </div>
    <nav class="containerFeed">
      <header class="topHeader">
        <img class="img-menu" src="img/menu.png" alt="logo menu três riscos iguais um em cima do outro" height="45" width="45" onclick="clickMenu()">
@@ -39,8 +46,23 @@ export default () => {
   </section>`
   userFeed.innerHTML = template;
 
-  const postButton = userFeed.querySelector("#add-post");
 
+
+  const postButton = userFeed.querySelector("#add-post");
+  const modal = document.querySelector(".modal");
+  
+  function toggleModal() {
+    modal.classList.toggle("show-modal");
+  }
+
+  function windowOnClick(event) {
+    if (event.target === modal) {
+      toggleModal();
+    }
+  }
+
+
+  window.addEventListener("click", windowOnClick);
   //ouvinte
   postButton.addEventListener("click", async function (event) {
     event.preventDefault();
@@ -92,26 +114,30 @@ export default () => {
       feedContainer.appendChild(postElement);
     });
 
-    posts.forEach((post)=>{
+    posts.forEach((post) => {
       const buttonEdit = document.getElementById(`${post.id}-edit-button`)
-      buttonEdit.addEventListener("click",(e)=>{
+      buttonEdit.addEventListener("click", (e) => {
         e.preventDefault()
-        EditarPostButton(post.id,post.texto)
+        EditarPostButton(post.id, post.texto)
       })
       const buttonDelete = document.getElementById(`${post.id}-delete-button`)
-      buttonDelete.addEventListener("click",(e)=>{
+      buttonDelete.addEventListener("click", (e) => {
         e.preventDefault()
         DeletePostButton(post.id)
       })
     })
   }
 
-  function EditarPostButton(id,text){
-    console.log(id,text)
+  function EditarPostButton(id, text) {
+    const modal = document.querySelector(".modal");
+    modal.classList.toggle("show-modal")
+    const closeButton = document.querySelector(".close-button");
+    closeButton.addEventListener("click", toggleModal)
+    console.log(id, text)
   }
 
-  function DeletePostButton(id){
-    console.log(id)
+  function DeletePostButton(id) {
+    deletePost(id)
   }
 
   console.log("passou")
