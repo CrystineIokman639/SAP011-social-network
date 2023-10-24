@@ -29,9 +29,8 @@ function authByGoogle (){
   });
 }
 // recupera os dados de autenticação do usuario
-function getUserData(){
-  let data=window.localStorage.getItem("auth");
-  return JSON.parse(data);
+export function getUserData(){
+ return auth.currentUser
 }
 
 // cadastro
@@ -42,11 +41,11 @@ const registerUser = async ( nickname, email, password) => {
       console.log(user)
     });
     await updateProfile(auth2.currentUser, {
-      displayName: username,
+      displayName: nickname,
     });
     const userData = {
       id: auth2.currentUser.uid,
-      username,
+      nickname,
       email,
     };
     await setDoc(doc(db, 'users', `${email}`), userData);

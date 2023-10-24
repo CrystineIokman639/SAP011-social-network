@@ -3,7 +3,6 @@ import {
     addDoc,
     serverTimestamp,
     query,
-    getDocs,
     orderBy,
     onSnapshot,
     deleteDoc,
@@ -12,6 +11,7 @@ import {
 import {
     db
 } from "../Firebase/firebase.config"
+import { getUserData } from "./firebaseauth.js";
 
 
 export async function createPost(text, idUser) {
@@ -19,18 +19,10 @@ export async function createPost(text, idUser) {
         texto: text,
         user: { uid: idUser },
         timestamp: serverTimestamp(),
-        nickname: "NICKNAME_DO_USUÁRIO",
+        nickname: getUserData().displayName,
 
     });
     return docRef
-}
-
-export function extractNicknameFromEmail(email) {
-    const emailParts = email.split('@'); // Divide o email em duas partes
-    if (emailParts.length > 0) {
-        return emailParts[0]; // O nickname é a primeira parte do email
-    }
-    return 'usuario'; // Retorna um valor padrão caso o email não seja válido
 }
 
 export async function getPosts(callback) {

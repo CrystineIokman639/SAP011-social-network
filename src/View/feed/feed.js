@@ -85,6 +85,15 @@ export default () => {
     }
   });
 
+  function extractNameFromEmail(email) {
+    return email.split('@')[0];
+  }
+  
+  const email = 'bobbyhadz@email.com';
+  
+  const name = extractNameFromEmail(email);
+  console.log(name);
+
   //  função de recuperação de posts do Firestore
 
   //   Função para Renderizar os Posts
@@ -103,7 +112,7 @@ export default () => {
       postElement.className = "post";
       postElement.innerHTML = `
         <section class="posts">
-          <span class="nickname">${post.user.nickname}</span>
+          <span class="nickname">${post.nickname}</span>
           <section class="container-text-post">
             <p class="text">${post.texto}</p>
             <button class="edit-button" id="${post.id}-edit-button" >edit</button>
