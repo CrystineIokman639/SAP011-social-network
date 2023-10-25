@@ -18,7 +18,7 @@
     background-color: #C0E1DF;
     align-items: center;
     position: fixed;
-    z-index: 1;
+    /* z-index: 1; */
 }
 
 .bodyFeed {
@@ -60,7 +60,7 @@
     display: none;
     flex-direction: column;
     justify-content: start;
-    z-index: 10;
+    /* z-index: 10; */
 }
 
 .form-feed{
@@ -86,7 +86,7 @@
 .nickname{
     width: 69px;
     height: 19px;
-    z-index: 10;
+    /* z-index: 10; */
     position: absolute;
     text-align: left;
     display: flex;
@@ -95,6 +95,7 @@
 
 .container-text-post{
     background-color: aqua;
+    position: absolute;
     margin-top: 25px;
     width: 410px;
     height: 100px;
@@ -138,8 +139,44 @@
     position: absolute;
     bottom: 1px;
     right: 6px;
-    z-index: 2;
+    
 }
+
+.edit-button{
+    background-color: #007bff;
+    border-radius: 8px;
+    min-width: 45px;
+    min-height: 20px;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    display: flex;
+    margin-top: -50px; /* Ajuste conforme necessário */
+    margin-left: -20px;
+    position: absolute;
+    bottom: 1px;
+    right: 6px;
+    
+}
+
+.delete-button{
+    background-color: #007bff;
+    border-radius: 8px;
+    min-width: 45px;
+    min-height: 20px;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    display: flex;
+    margin-top: -50px; /* Ajuste conforme necessário */
+    margin-left: -20px;
+    position: absolute;
+    bottom: 1px;
+    right: 60px;
+    }
+
 
 .area-button-postar{
     width: 40px;
@@ -149,7 +186,7 @@
     position: absolute;
     bottom: 2px;
     right: 6px;
-    z-index: 2;
+    /* z-index: 2; */
 }
 
 .containerPubli{
@@ -179,7 +216,7 @@
     height: 100px;
     border: none;
     border-radius: 20px;
-    z-index: 10;
+    /* z-index: 10; */
 }
 
 ul{
@@ -245,6 +282,22 @@ ul{
 .show-modal {
     opacity: 1;
     visibility: visible;
-    transform: scale(1.0);
     transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s;
+    z-index: 100;
+}
+.button-save-modal{
+    background-color: #007bff;
+    border-radius: 8px;
+    min-width: 45px;
+    min-height: 20px;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    display: flex;
+    margin-top: -50px; /* Ajuste conforme necessário */
+    margin-left: -20px;
+    position: absolute;
+    bottom: 1px;
+    right: 60px;
 }

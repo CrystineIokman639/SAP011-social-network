@@ -13,7 +13,11 @@ export default () => {
   <div class="modal">
       <div class="modal-content">
         <span class="close-button">×</span>
-        <h1>Hello, I am a modal!</h1>
+        <h3>editar texto</h3>
+        <input id="id-text-modal" class="text-modal"></input>
+        <section>
+         <button type="button" id="id-save-text-modal" class="button-save-modal">salvar</button>
+        <section>
       </div>
     </div>
    <nav class="containerFeed">
@@ -49,8 +53,8 @@ export default () => {
 
 
   const postButton = userFeed.querySelector("#add-post");
-  const modal = document.querySelector(".modal");
-  
+  const modal = userFeed.querySelector(".modal");
+
   function toggleModal() {
     modal.classList.toggle("show-modal");
   }
@@ -85,15 +89,6 @@ export default () => {
     }
   });
 
-  function extractNameFromEmail(email) {
-    return email.split('@')[0];
-  }
-  
-  const email = 'bobbyhadz@email.com';
-  
-  const name = extractNameFromEmail(email);
-  console.log(name);
-
   //  função de recuperação de posts do Firestore
 
   //   Função para Renderizar os Posts
@@ -113,10 +108,12 @@ export default () => {
       postElement.innerHTML = `
         <section class="posts">
           <span class="nickname">${post.nickname}</span>
-          <section class="container-text-post">
-            <p class="text">${post.texto}</p>
+          <section class ="buttons-edit">
             <button class="edit-button" id="${post.id}-edit-button" >edit</button>
             <button class="delete-button" id="${post.id}-delete-button" >Delete</button>
+          </section>
+          <section class="container-text-post">
+            <p class="text">${post.texto}</p>
           </section>
         </section>
       `;
@@ -139,6 +136,7 @@ export default () => {
 
   function EditarPostButton(id, text) {
     const modal = document.querySelector(".modal");
+    document.querySelector("#id-text-modal").value = text
     modal.classList.toggle("show-modal")
     const closeButton = document.querySelector(".close-button");
     closeButton.addEventListener("click", toggleModal)
