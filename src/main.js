@@ -4,10 +4,8 @@ import register from "./View/Register/register"
 // import register from "./View/register/register"
 
 const main = document.querySelector("#main");
-
-const init = () => {
-    window.addEventListener("hashchange", () =>{
-        main.innerHTML = ""
+function verificaHash(){
+    main.innerHTML = ""
     switch(window.location.hash) {
         case "#login":
             main.appendChild(login());
@@ -21,12 +19,15 @@ const init = () => {
             default:
             main.appendChild(login());
     }
+}
+const init = () => {
+    window.addEventListener("hashchange", () =>{
+      verificaHash()
     }
 )}
 
 window.addEventListener ("load", () => {
-    window.location.hash="";
-    main.appendChild(login());
+    verificaHash()
     init(); 
 });
 

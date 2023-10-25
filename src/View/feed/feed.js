@@ -1,7 +1,8 @@
 import {
   createPost,
   deletePost,
-  getPosts
+  getPosts,
+  atualizaPost,
 } from '../../Firebase/firebaseStore.js';
 import './feed.css';
 
@@ -109,8 +110,8 @@ export default () => {
         <section class="posts">
           <span class="nickname">${post.nickname}</span>
           <section class ="buttons-edit">
-            <button class="edit-button" id="${post.id}-edit-button" >edit</button>
-            <button class="delete-button" id="${post.id}-delete-button" >Delete</button>
+            <button class="edit-button" id="${post.id}-edit-button" >Editar</button>
+            <button class="delete-button" id="${post.id}-delete-button" >Deletar</button>
           </section>
           <section class="container-text-post">
             <p class="text">${post.texto}</p>
@@ -120,11 +121,19 @@ export default () => {
       feedContainer.appendChild(postElement);
     });
 
+    
+  
+
     posts.forEach((post) => {
       const buttonEdit = document.getElementById(`${post.id}-edit-button`)
       buttonEdit.addEventListener("click", (e) => {
         e.preventDefault()
         EditarPostButton(post.id, post.texto)
+        userFeed.querySelector("#id-save-text-modal").addEventListener("click", ()=>{
+          const newText = userFeed.querySelector("#id-text-modal").value
+          atualizaPost(post.id, newText)
+          toggleModal()
+        })
       })
       const buttonDelete = document.getElementById(`${post.id}-delete-button`)
       buttonDelete.addEventListener("click", (e) => {

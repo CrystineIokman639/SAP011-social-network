@@ -7,6 +7,7 @@ import {
     onSnapshot,
     deleteDoc,
     doc,
+    updateDoc,
 } from "firebase/firestore";
 import {
     db
@@ -51,6 +52,6 @@ export async function deletePost(id) {
 export function atualizaPost(postId, novoTexto) {
     const postRef = doc(db, "posts", postId);
     updateDoc(postRef, {
-        text: novoTexto
+        texto: novoTexto
     });  
 }
