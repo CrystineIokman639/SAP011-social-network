@@ -1,13 +1,17 @@
-import { signInWithEmailAndPassword,signInWithPopup, GoogleAuthProvider, createUserWithEmailAndPassword } from 'firebase/auth';
-import {auth, app} from './firebase.config';
+import {
+  signInWithEmailAndPassword, 
+  signInWithPopup, GoogleAuthProvider, 
+  createUserWithEmailAndPassword
+} from 'firebase/auth'; 
+import { auth, app } from './firebase.config';
 
 
-function authLogin (email,password){
+function authLogin(email, password) { 
   signInWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
       const user = JSON.stringify(userCredential.user);
-      window.localStorage.setItem("auth",user)
-      window.location.href="/#feed"
+      window.localStorage.setItem("auth", user)
+      window.location.href = "/#feed"
     })
     .catch((error) => {
       const errorCode = error.code;
@@ -15,26 +19,26 @@ function authLogin (email,password){
     });
 }
 
-function authByGoogle (){
+function authByGoogle() {
   const provider = new GoogleAuthProvider()
   signInWithPopup(auth, provider)
-  .then((result) => {
-    // acrescentei os dados a baixo para ir para o feed
-    const user = JSON.stringify(result.user);
-    window.localStorage.setItem("auth",user)
-    window.location.href="/#feed"
+    .then((result) => {
+      // acrescentei os dados a baixo para ir para o feed
+      const user = JSON.stringify(result.user);
+      window.localStorage.setItem("auth", user)
+      window.location.href = "/#feed"
 
-  }).catch((error) => {
-    console.log(error)
-  });
+    }).catch((error) => {
+      console.log(error)
+    });
 }
 // recupera os dados de autenticação do usuario
-export function getUserData(){
- return auth.currentUser
+export function getUserData() {
+  return auth.currentUser
 }
 
 // cadastro
-const registerUser = async ( nickname, email, password) => {
+const registerUser = async (nickname, email, password) => {
   try {
     const auth2 = getAuth(app);
     await createUserWithEmailAndPassword(auth, email, password).then((user) => {
@@ -52,7 +56,7 @@ const registerUser = async ( nickname, email, password) => {
   } catch (error) {
     console.log('Erro ao cadastrar usuário:', error.message);
   }
-  window.location.href="../#feed"
+  window.location.href = "../#feed"
 };
 
-export {authLogin, authByGoogle, registerUser}
+export { authLogin, authByGoogle, registerUser }
