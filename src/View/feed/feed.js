@@ -6,7 +6,6 @@ import {
 import './feed.css';
 
 export default () => {
-  console.log("passou aqui")
   const userFeed = document.createElement('section');
   const template = ` 
   <section class="geral">
@@ -64,7 +63,6 @@ export default () => {
       toggleModal();
     }
   }
-
 
   window.addEventListener("click", windowOnClick);
   //ouvinte

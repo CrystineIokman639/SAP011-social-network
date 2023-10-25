@@ -14,7 +14,7 @@ const firebaseConfig = {
   storageBucket: "booknook-deb87.appspot.com",
   messagingSenderId: "458461086587",
   appId: "1:458461086587:web:cd1ee96414be7ace2ff3de",
-  measurementId: "G-TX0TXHJD65"
+  measurementId: "G-TX0TXHJD65",
 };
 
 // Initialize Firebase
@@ -25,4 +25,4 @@ export const db = getFirestore(app);
 export const dbUsers = collection(db, "users");
 export const dbPosts = collection(db, "posts");
 
-export {auth, app}
+export { auth, app };

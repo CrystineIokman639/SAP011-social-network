@@ -9,10 +9,9 @@ import {
     doc,
 } from "firebase/firestore";
 import {
-    db
-} from "../Firebase/firebase.config"
+    db,
+} from "../Firebase/firebase.config";
 import { getUserData } from "./firebaseauth.js";
-
 
 export async function createPost(text, idUser) {
     const docRef = await addDoc(collection(db, "posts"), {
@@ -23,7 +22,7 @@ export async function createPost(text, idUser) {
 
     });
     return docRef
-}
+};
 
 export async function getPosts(callback) {
     const postsCollection = query(collection(db, "posts"), orderBy("timestamp", "asc"));
@@ -39,18 +38,17 @@ export async function getPosts(callback) {
             posts.push(post);
         });
         callback(posts);
-    })
-
-}
+    });
+};
 
 export async function deletePost(id) {
     const resp = await deleteDoc(doc(db, "posts", id))
     return resp
-}
-    
+};
+
 export function atualizaPost(postId, novoTexto) {
     const postRef = doc(db, "posts", postId);
     updateDoc(postRef, {
         text: novoTexto
-    });  
+    });
 }
