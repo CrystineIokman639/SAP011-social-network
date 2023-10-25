@@ -84,7 +84,7 @@
   }
 
 .nickname{
-    width: 69px;
+    width: auto;
     height: 19px;
     /* z-index: 10; */
     position: absolute;
