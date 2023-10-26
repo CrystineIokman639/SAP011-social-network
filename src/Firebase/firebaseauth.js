@@ -1,7 +1,7 @@
 import {
   signInWithEmailAndPassword, 
   signInWithPopup, GoogleAuthProvider, 
-  createUserWithEmailAndPassword, getAuth
+  createUserWithEmailAndPassword, getAuth, updateProfile
 } from 'firebase/auth'; 
 import {
   setDoc, doc,
@@ -45,12 +45,13 @@ export function getUserData() {
 
 // cadastro
 const registerUser = async (nickname, email, password) => {
+  console.log(nickname)
   try {
     const auth2 = getAuth(app);
     await createUserWithEmailAndPassword(auth, email, password).then((user) => {
       console.log(user)
     });
-    await updateProfile(auth2.currentUser.uid, {
+    await updateProfile(auth.currentUser, {
       displayName: nickname,
     });
     const userData = {
