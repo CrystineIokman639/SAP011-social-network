@@ -40,8 +40,7 @@ export function getUserData() {
 // cadastro
 const registerUser = async (nickname, email, password) => {
   try {
-    const auth2 = getAuth(app);
-    await createUserWithEmailAndPassword(auth, email, password).then((user) => {
+    await createUserWithEmailAndPassword(auth, nickname, email, password).then((user) => {
       console.log(user)
     });
     await updateProfile(auth2.currentUser, {
