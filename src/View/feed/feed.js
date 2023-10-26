@@ -1,13 +1,24 @@
 import {
   createPost,
-  getPosts
+  deletePost,
+  getPosts,
+  atualizaPost,
 } from '../../Firebase/firebaseStore.js';
 import './feed.css';
 export default () => {
-  console.log("passou aqui")
   const userFeed = document.createElement('section');
   const template = ` 
   <section class="geral">
+  <div class="modal">
+      <div class="modal-content">
+        <span class="close-button">×</span>
+        <h3>editar texto</h3>
+        <input id="id-text-modal" class="text-modal"></input>
+        <section>
+         <button type="button" id="id-save-text-modal" class="button-save-modal">salvar</button>
+        <section>
+      </div>
+    </div>
    <nav class="containerFeed">
      <header class="topHeader">
        <img class="img-menu" src="img/menu.png" alt="logo menu três riscos iguais um em cima do outro" height="45" width="45" onclick="clickMenu()">
@@ -38,8 +49,22 @@ export default () => {
   </section>`
   userFeed.innerHTML = template;
 
-  const postButton = userFeed.querySelector("#add-post");
 
+
+  const postButton = userFeed.querySelector("#add-post");
+  const modal = userFeed.querySelector(".modal");
+
+  function toggleModal() {
+    modal.classList.toggle("show-modal");
+  }
+
+  function windowOnClick(event) {
+    if (event.target === modal) {
+      toggleModal();
+    }
+  }
+
+  window.addEventListener("click", windowOnClick);
   //ouvinte
   postButton.addEventListener("click", async function (event) {
     event.preventDefault();
@@ -73,13 +98,18 @@ export default () => {
     // Limpe o feed (caso deseje recarregar os posts)
     feedContainer.innerHTML = "";
 
+    console.log(posts)
     // Renderize cada post no feed
     posts.forEach((post) => {
       const postElement = document.createElement("section");
       postElement.className = "post";
       postElement.innerHTML = `
         <section class="posts">
-          <span class="nickname">${post.user.nickname}</span>
+          <span class="nickname">${post.nickname}</span>
+          <section class ="buttons-edit">
+            <button class="edit-button" id="${post.id}-edit-button" >Editar</button>
+            <button class="delete-button" id="${post.id}-delete-button" >Deletar</button>
+          </section>
           <section class="container-text-post">
             <p class="text">${post.texto}</p>
           </section>
@@ -87,6 +117,40 @@ export default () => {
       `;
       feedContainer.appendChild(postElement);
     });
+
+    
+  
+
+    posts.forEach((post) => {
+      const buttonEdit = document.getElementById(`${post.id}-edit-button`)
+      buttonEdit.addEventListener("click", (e) => {
+        e.preventDefault()
+        EditarPostButton(post.id, post.texto)
+        userFeed.querySelector("#id-save-text-modal").addEventListener("click", ()=>{
+          const newText = userFeed.querySelector("#id-text-modal").value
+          atualizaPost(post.id, newText)
+          toggleModal()
+        })
+      })
+      const buttonDelete = document.getElementById(`${post.id}-delete-button`)
+      buttonDelete.addEventListener("click", (e) => {
+        e.preventDefault()
+        DeletePostButton(post.id)
+      })
+    })
+  }
+
+  function EditarPostButton(id, text) {
+    const modal = document.querySelector(".modal");
+    document.querySelector("#id-text-modal").value = text
+    modal.classList.toggle("show-modal")
+    const closeButton = document.querySelector(".close-button");
+    closeButton.addEventListener("click", toggleModal)
+    console.log(id, text)
+  }
+
+  function DeletePostButton(id) {
+    deletePost(id)
   }
 
   console.log("passou")

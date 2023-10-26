@@ -18,7 +18,7 @@
     background-color: #C0E1DF;
     align-items: center;
     position: fixed;
-    z-index: 1;
+    /* z-index: 1; */
 }
 
 .bodyFeed {
@@ -60,7 +60,7 @@
     display: none;
     flex-direction: column;
     justify-content: start;
-    z-index: 10;
+    /* z-index: 10; */
 }
 
 .form-feed{
@@ -72,6 +72,7 @@
 .posts {
     display: flex;
     justify-content: center;
+    position: relative;
     width: 480px;
     height: 140px;
     border: 1px solid #ccc;
@@ -83,13 +84,18 @@
   }
 
 .nickname{
-    width: 69px;
+    width: auto;
     height: 19px;
-    z-index: 10;
+    /* z-index: 10; */
+    position: absolute;
+    text-align: left;
+    display: flex;
+    justify-content: right;
 }
 
 .container-text-post{
     background-color: aqua;
+    position: absolute;
     margin-top: 25px;
     width: 410px;
     height: 100px;
@@ -102,6 +108,7 @@
     justify-content: center;
     align-items: center;
     font-size: large;
+    margin: 10px;
 }
 
 /* .edit-button {
@@ -132,8 +139,44 @@
     position: absolute;
     bottom: 1px;
     right: 6px;
-    z-index: 2;
+    
 }
+
+.edit-button{
+    background-color: #007bff;
+    border-radius: 8px;
+    min-width: 45px;
+    min-height: 20px;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    display: flex;
+    margin-top: -50px; /* Ajuste conforme necessário */
+    margin-left: -20px;
+    position: absolute;
+    bottom: 1px;
+    right: 6px;
+    
+}
+
+.delete-button{
+    background-color: #007bff;
+    border-radius: 8px;
+    min-width: 45px;
+    min-height: 20px;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    display: flex;
+    margin-top: -50px; /* Ajuste conforme necessário */
+    margin-left: -20px;
+    position: absolute;
+    bottom: 1px;
+    right: 60px;
+    }
+
 
 .area-button-postar{
     width: 40px;
@@ -143,7 +186,7 @@
     position: absolute;
     bottom: 2px;
     right: 6px;
-    z-index: 2;
+    /* z-index: 2; */
 }
 
 .containerPubli{
@@ -173,7 +216,7 @@
     height: 100px;
     border: none;
     border-radius: 20px;
-    z-index: 10;
+    /* z-index: 10; */
 }
 
 ul{
@@ -200,4 +243,61 @@ ul{
     cursor: pointer;
     margin-left: 25px;
 
+}
+
+.modal {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    visibility: hidden;
+    transform: scale(1.1);
+    transition: visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s;
+}
+.modal-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 1rem 1.5rem;
+    width: 24rem;
+    border-radius: 0.5rem;
+}
+.close-button {
+    float: right;
+    width: 1.5rem;
+    line-height: 1.5rem;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 0.25rem;
+    background-color: lightgray;
+}
+.close-button:hover {
+    background-color: darkgray;
+}
+.show-modal {
+    opacity: 1;
+    visibility: visible;
+    transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s;
+    z-index: 100;
+}
+.button-save-modal{
+    background-color: #007bff;
+    border-radius: 8px;
+    min-width: 45px;
+    min-height: 20px;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    display: flex;
+    margin-top: -50px; /* Ajuste conforme necessário */
+    margin-left: -20px;
+    position: absolute;
+    bottom: 1px;
+    right: 60px;
 }
