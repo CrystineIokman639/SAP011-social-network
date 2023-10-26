@@ -60,14 +60,14 @@ export default () => {
   function validaCampo() {
     if (!email || !regexEmail.test(email)) {
       errors.email = true
-      emailAlert.textContent = ' insira um e-mail válido';
+      emailAlert.textContent = 'insira um e-mail válido';
     } else {
       errors.email = false
       emailAlert.textContent = '';
     }
     if (!senha) {
       errors.senha = true
-      senhaAlert.textContent = ' insira uma senha';
+      senhaAlert.textContent = 'insira uma senha';
     } else {
       errors.senha = false
       senhaAlert.textContent = '';
