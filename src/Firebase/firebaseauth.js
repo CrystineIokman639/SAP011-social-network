@@ -1,7 +1,7 @@
 import {
   signInWithEmailAndPassword, 
   signInWithPopup, GoogleAuthProvider, 
-  createUserWithEmailAndPassword, getAuth
+  createUserWithEmailAndPassword, getAuth, updateProfile
 } from 'firebase/auth'; 
 import {
   setDoc, doc,
@@ -50,7 +50,7 @@ const registerUser = async (nickname, email, password) => {
     await createUserWithEmailAndPassword(auth, email, password).then((user) => {
       console.log(user)
     });
-    await updateProfile(auth2.currentUser.uid, {
+    await updateProfile(auth2.currentUser, {
       displayName: nickname,
     });
     const userData = {
