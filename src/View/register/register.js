@@ -36,9 +36,9 @@ export default () => {
     </nav>
     </section>
     `;
-    register.innerHTML = registerTemplate;
-    const appContainer = document.querySelector('#main');
-    appContainer.appendChild(register);
+  register.innerHTML = registerTemplate;
+  const appContainer = document.querySelector('#main');
+  appContainer.appendChild(register);
 
   const form = appContainer.querySelector('.form-register')
   const nickname = appContainer.querySelector('#nickname')
@@ -63,17 +63,17 @@ export default () => {
     const emailValue = regEmail.value.trim()// .value é pra pegar as inform
     const passValue = password.value.trim()
     const passConfirmValue = passwordConfirm.value.trim()
-
-    if(nicknameValue === '') {
+    console.log(nicknameValue)
+    if (nicknameValue === '') {
       spanNickname.textContent = 'Preencha esse campo';
     }
-    if(emailValue === '') {
+    if (emailValue === '') {
       spanEmail.textContent = 'Preencha esse campo';
     }
-    if(passValue === '') {
+    if (passValue === '') {
       spanPass.textContent = 'Preencha esse campo';
     }
-    if(passConfirmValue === '') {
+    if (passConfirmValue === '') {
       spanPassConfirm.textContent = 'Preencha esse campo';
     }
     if(emailValue !== '' && passValue !== '' && passConfirmValue !== '' && nicknameValue !== ''){
@@ -112,6 +112,6 @@ export default () => {
     show1.style.visibility = 'visible';
     off1.style.visibility = 'hidden';
   });
-  
+
   return register;
 }

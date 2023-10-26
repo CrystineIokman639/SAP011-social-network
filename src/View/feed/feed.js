@@ -5,6 +5,12 @@ import {
   atualizaPost,
 } from '../../Firebase/firebaseStore.js';
 import './feed.css';
+import menu from "../../img/menu.png"
+import logo from "../../img/logo.svg"
+import logon from "../../img/logon.svg"
+import feed from "../../img/feed.png"
+import logout from "../../img/logout.png"
+
 export default () => {
   const userFeed = document.createElement('section');
   const template = ` 
@@ -21,17 +27,17 @@ export default () => {
     </div>
    <nav class="containerFeed">
      <header class="topHeader">
-       <img class="img-menu" src="img/menu.png" alt="logo menu três riscos iguais um em cima do outro" height="45" width="45" onclick="clickMenu()">
-       <img class="logo-header" src="img/logo.svg" alt="logo booknook, um livro aberto com as folhas abrindo" height="60" width="60">
-       <img class="nada" src="img/logon.svg" alt="icone vazio gambiarra braba">
+       <img class="img-menu" src="${menu}" alt="logo menu três riscos iguais um em cima do outro" height="45" width="45" onclick="clickMenu()">
+       <img class="logo-header" src="${logo}" alt="logo booknook, um livro aberto com as folhas abrindo" height="60" width="60">
+       <img class="nada" src="${logon}" alt="icone vazio gambiarra braba">
      </header>
     <ul id="itens" class="menu">
      <li class="cat">
-       <img class="feed" src="img/feed.png" alt="icone para ir para o feed">
+       <img class="feed" src="${feed}" alt="icone para ir para o feed">
        <a class="titulo">Feed</a>
      </li>
      <li class="cat">
-       <img class="logout" src="img/logout.png" alt="icone para sair da página">
+       <img class="logout" src="${logout}" alt="icone para sair da página">
        <a class="titulo" href="/#login">Sair</a>
      </li>
     </ul>
